@@ -1,0 +1,48 @@
+﻿@model NailShop.DataAccess.vw_About
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Share/_Backend.cshtml";
+}
+
+<section class="vbox" ng-app="MyApp" ng-controller="CtrlController">
+    <section class="scrollable padder">
+        <div class="m-b-md">
+            <h3 class="m-b-none">@Resources.Backend.headAbout</h3>
+        </div>
+        @using (Html.BeginForm("about", "admin", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <textarea id="description" style="height:500px">@Model.Contents</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-primary">@Resources.Backend.btnSave</button>
+                </div>
+            </div>
+        }
+    </section>
+</section>
+@section Styles {
+    <link href="~/contents/assets/css/kendo.common.css" rel=" stylesheet" />
+    <link href="~/contents/assets/css/kendo.default.css" rel=" stylesheet" />
+}
+@section Scripts {
+    <script src="~/contents/assets/js/kendo.js"></script>
+    <script src="~/contents/assets/js/function.js"></script>
+    <script>
+        //config upload image browse
+        var MRT_ReadImageURL = "@Url.Action("Index", "Mediamanager", new { area = "" })";
+        var MRT_DestroyImageURL = "@Url.Action("Destroy", "Mediamanager", new { area = "" })";
+        var MRT_CreateImageURL = "@Url.Action("Create", "Mediamanager", new { area = "" })";
+        var MRT_ThumbnailImageURL = "@Url.Action("Thumbnail", "Mediamanager", new { area = "" })";
+        var MRT_UploadImageURL = "@Url.Action("Upload", "Mediamanager", new { area = "" })";
+        var MRT_GetImageImageURL = "@Url.Action("GetImage", "Mediamanager", new { area = "" })";
+    </script>
+    <script>
+        loadEditor("#description");
+    </script>
+}
