@@ -25,7 +25,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body ng-app="emailApp">
     <div class="container page-wrap">
       <div class="row">
         <div class="col-sm-6">
@@ -38,6 +38,35 @@
             </li>
             <li>
               <a href="mailto:truc.truong09@gmail.com"><i class="fa fa-envelope-o"></i> truc.truong09@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-6">
+          <ul class="list-inline text-right">
+            <li>
+              <a href="#">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-google-plus"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-youtube"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-weixin"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-whatsapp"></i>
+              </a>
             </li>
           </ul>
         </div>
@@ -75,11 +104,17 @@
         </nav>
 
         <!-- Begin page content -->
-        <div class="page-header">
-        <h1>Sticky footer with fixed navbar</h1>
-        </div>
-        <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body > .container</code>.</p>
-        <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
+        <form name="formEmail" ng-controller="emailCtrl">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="inputEmail" class="form-control" ng-model="email.text" required>
+            <span ng-show="formEmail.inputEmail.$error.required">Email required</span>
+            <span ng-show="formEmail.inputEmail.$error.email">Email format</span>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success">Send</button>
+          </div>
+        </form>
 
         <footer class="footer">
           <div class="container">
@@ -90,7 +125,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script>
+      angular.module('emailApp', [])
+        .controller('emailCtrl', ['$scope', function($scope) {
+      }]);
+    </script>
   </body>
 </html>
