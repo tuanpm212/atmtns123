@@ -1,6 +1,10 @@
 body {
   background-color: #d9d8c9;
-  padding: 30px;
+}
+@media (min-width: 768px) {
+  body {
+    padding: 30px;
+  }
 }
 .page-wrap {
   background-color: #ffffff;

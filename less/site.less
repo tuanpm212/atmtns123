@@ -4,7 +4,9 @@
 
 body {
   background-color: @body-bg;
-  padding: 30px;
+	@media (min-width: @grid-float-breakpoint) {
+		padding: 30px;
+	}
 }
 
 .page-wrap {
