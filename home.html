@@ -25,10 +25,10 @@
     <![endif]-->
   </head>
 
-  <body ng-app="emailApp" ng-controller="emailCtrl">
-    <div class="container page-wrap">
-      <div class="row">
-        <div class="col-sm-6">
+  <body ng-app="emailApp" ng-controller="emailCtrl" class="oil-theme">
+    <div class="container page-wrap z-depth-1">
+      <div class="row header-top z-depth-2 hidden-xs">
+        <div class="col-xs-9">
           <ul class="list-inline">
             <li>
               <a href="skype:echo123?call"><i class="fa fa-skype"></i> truc.trg</a>
@@ -41,7 +41,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-sm-6">
+        <div class="col-xs-3">
           <ul class="list-inline text-right">
             <li>
               <a href="#">
@@ -71,29 +71,43 @@
           </ul>
         </div>
       </div>
+
+      <div class="row header-logo">
+        <a class="navbar-brand logo-sm" href="#">
+          <img src="images/logo.png">
+        </a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+
       <div class="row">
         <div class="col-sm-12">
-          <a class="navbar-brand" href="#">Project name</a>
+          <nav class="navbar navbar-static-top">
+            <nav class="collapse navbar-collapse" id="navbar">
+              <ul class="list-unstyled">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="#">Tin tức</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">Hình ảnh</a></li>
+                <li><a href="#">Liên hệ</a></li>
+              </ul>
+            </nav>
+          </nav>
         </div>
       </div>
+
+
+
+
       <div class="row">
-        <nav class="navbar navbar-default navbar-static-top">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-        </nav>
+
 
         <!-- Begin page content -->
         <form name="formEmail">
