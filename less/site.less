@@ -64,6 +64,8 @@ body {
 
 	.header-logo {
 		background-color: #f8f8f1;
+		border-bottom: 1px solid #f4f3ef;
+
 		@media (min-width: @grid-float-breakpoint) {
 			background-color: #ffffff;
 		}
@@ -92,9 +94,26 @@ body {
 		}
 
 		.navbar-toggle {
+			padding-top: 11px;
+			padding-bottom: 11px;
+
 			.icon-bar {
 				height: 4px;
 				background-color: @navbar-toggle-bg;
+			}
+		}
+	}
+
+	.header-bottom {
+		.navbar-collapse {
+			border-bottom: 1px solid #f4f3ef;
+		}
+
+		ul {
+			margin-top: 10px;
+
+			li {
+				line-height: 40px;
 			}
 		}
 	}

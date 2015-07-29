@@ -50,6 +50,7 @@ body {
 }
 .oil-theme .header-logo {
   background-color: #f8f8f1;
+  border-bottom: 1px solid #f4f3ef;
 }
 @media (min-width: 768px) {
   .oil-theme .header-logo {
@@ -77,7 +78,20 @@ body {
     height: 87px;
   }
 }
+.oil-theme .header-logo .navbar-toggle {
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
 .oil-theme .header-logo .navbar-toggle .icon-bar {
   height: 4px;
   background-color: #c9c8b5;
+}
+.oil-theme .header-bottom .navbar-collapse {
+  border-bottom: 1px solid #f4f3ef;
+}
+.oil-theme .header-bottom ul {
+  margin-top: 10px;
+}
+.oil-theme .header-bottom ul li {
+  line-height: 40px;
 }
