@@ -94,4 +94,47 @@ body {
 }
 .oil-theme .header-bottom ul li {
   line-height: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.oil-theme .header-bottom ul li.active a,
+.oil-theme .header-bottom ul li:hover a,
+.oil-theme .header-bottom ul li:focus a {
+  color: #dad2ae;
+}
+@media (min-width: 768px) {
+  .oil-theme .header-bottom ul {
+    text-align: center;
+    font-size: 0;
+  }
+  .oil-theme .header-bottom ul li {
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  .oil-theme .header-bottom ul li a {
+    font-size: 14px;
+  }
+}
+.oil-theme .footer-top,
+.oil-theme .footer-bottom {
+  color: #ffffff;
+}
+.oil-theme .footer-top {
+  background-color: #bab9a6;
+}
+.oil-theme .footer-top h3 {
+  color: #d9524f;
+}
+.oil-theme .footer-top h3 i {
+  font-size: 34px;
+}
+.oil-theme .footer-top p i {
+  margin-left: 25px;
+}
+.oil-theme .footer-bottom {
+  background-color: #acaa8e;
+}
+.oil-theme .footer-bottom p {
+  margin-top: 10px;
 }

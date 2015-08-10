@@ -53,6 +53,10 @@ body {
 		background-color: @p-wrap;
 	}
 
+//
+// Header
+// --------------------------------------------------
+
 	.header-top {
 		position: relative;
 		background-color: #f8f8f1;
@@ -114,7 +118,66 @@ body {
 
 			li {
 				line-height: 40px;
+				text-transform: uppercase;
+				font-weight: bold;
+
+				&.active, &:hover, &:focus {
+					a {
+						color: #dad2ae;
+					}
+				}
 			}
+		}
+
+		@media (min-width: @screen-sm-min) {
+			ul {
+				text-align: center;
+				font-size: 0;
+
+				li {
+					display: inline-block;
+					margin-right: 5px;
+					margin-left: 5px;
+
+					a {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+
+//
+// Footer
+// --------------------------------------------------
+
+	.footer-top, .footer-bottom {
+		color: #ffffff;
+	}
+
+	.footer-top {
+		background-color: @footer-top-bg;
+
+		h3 {
+			color: @footer-top-heading;
+
+			i {
+				font-size: 34px;
+			}
+		}
+
+		p {
+			i {
+				margin-left: 25px;
+			}
+		}
+	}
+
+	.footer-bottom {
+		background-color: @footer-bottom-bg;
+
+		p {
+			margin-top: 10px;
 		}
 	}
 }
