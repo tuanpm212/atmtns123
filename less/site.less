@@ -3,6 +3,66 @@
 @import "oil-variables.less";
 
 //
+// Buttons
+// --------------------------------------------------
+
+// Mixin for generating new styles
+.btn-styles(@btn-color: #555) {
+  background-color: @btn-color;
+  background-repeat: repeat-x;
+  border-color: @btn-color;
+  background-image: none;
+  .box-shadow(none);
+
+  &:hover,
+  &:focus  {
+    background-color: darken(@btn-color, 12%);
+    border-color: darken(@btn-color, 12%);
+    background-position: 0 -15px;
+  }
+
+  &:active,
+  &.active {
+    background-color: darken(@btn-color, 14%);
+    border-color: darken(@btn-color, 14%);
+
+	&:hover,
+	&:focus  {
+	background-color: darken(@btn-color, 12%);
+	border-color: darken(@btn-color, 12%);
+	background-position: 0 -15px;
+	}
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: darken(@btn-color, 12%);
+      border-color: darken(@btn-color, 12%);
+      background-image: none;
+    }
+  }
+}
+
+// Common styles
+.btn {
+  // Remove the gradient for the pressed/active state
+  &:active,
+  &.active {
+    background-image: none;
+  }
+}
+
+// Apply the mixin to the buttons
+.btn-default { .btn-styles(@btn-default-bg); border-color: @btn-default-bg; color: #ffffff !important; }
+
+//
 // Z-depth
 // --------------------------------------------------
 
@@ -30,7 +90,9 @@
 
 
 body {
-  background-color: @body-bg;
+	background-color: @body-bg;
+	color: @body-color;
+
 	@media (min-width: @grid-float-breakpoint) {
 		padding-top: 30px;
 		padding-bottom: 30px;
@@ -151,12 +213,13 @@ body {
 // Footer
 // --------------------------------------------------
 
-	.footer-top, .footer-bottom {
+	footer {
 		color: #ffffff;
+		background-color: @footer-top-bg;
 	}
 
 	.footer-top {
-		background-color: @footer-top-bg;
+		
 
 		h3 {
 			color: @footer-top-heading;
@@ -178,6 +241,115 @@ body {
 
 		p {
 			margin-top: 10px;
+		}
+	}
+}
+
+//
+// Content
+// --------------------------------------------------
+
+.section-slide {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #f4f3ef;
+
+	.slide-control {
+		background-color: #d9d8c9;
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		top: 50%;
+		left: 0;
+		color: #000000;
+		margin-top: -20px;
+		line-height: 40px;
+		text-align: center;
+		font-size: 24px;
+		.opacity(0.3);
+
+		&:hover {
+			.opacity(0.5);
+			color: #000000;
+		}
+
+		&.right {
+			left: auto;
+			right: 0;
+		}
+	}
+
+	.carousel-indicators {
+		bottom: 5px;
+
+		li {
+			.opacity(0.3);
+		}
+
+		.active {
+			width: 10px;
+			height: 10px;
+			margin: 1px;
+		}
+	}
+}
+
+.section-news {
+	padding-bottom: 15px;
+
+	.wellcome-block {
+		.description {
+			ul {
+				list-style-type: none;
+			}
+		}
+	}
+
+	.news-list {
+		.item {
+			border-bottom: 1px solid #f4f3ef;
+
+			.top {
+				display: block;
+				float: left;
+				width: 50px;
+				height: 50px;
+				color: #ffffff;
+				text-align: center;
+				line-height: 50px;
+				font-size: 24px;
+				border-radius: 25px;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				margin-right: 10px;
+			}
+
+			.top-1 {
+				background-color: @news-top-1;
+			}
+
+			.top-2 {
+				background-color: @news-top-2;
+			}
+
+			.top-3 {
+				background-color: @news-top-3;
+			}
+
+			h4 {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.section-service {
+	.service-content {
+		background-color: #f8f8f1;
+
+		h3 {
+			color: #d9524e;
+			border-bottom: 1px solid #f4f3ef;
 		}
 	}
 }
