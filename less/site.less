@@ -63,6 +63,17 @@
 .btn-default { .btn-styles(@btn-default-bg); border-color: @btn-default-bg; color: #ffffff !important; }
 
 //
+// Input
+// --------------------------------------------------
+
+.form-control {
+	border-radius: 0;
+	border-color: #e7eada;
+	background-color: #f3f5ea;
+	.box-shadow(none);
+}
+
+//
 // Z-depth
 // --------------------------------------------------
 
@@ -198,8 +209,8 @@ body {
 
 				li {
 					display: inline-block;
-					margin-right: 5px;
-					margin-left: 5px;
+					margin-right: 10px;
+					margin-left: 10px;
 
 					a {
 						font-size: 14px;
@@ -233,6 +244,10 @@ body {
 			i {
 				margin-left: 25px;
 			}
+		}
+
+		a {
+			color: #ffffff;
 		}
 	}
 
@@ -344,11 +359,28 @@ body {
 }
 
 .section-service {
+	margin-bottom: 15px;
+
 	.service-content {
+		padding-bottom: 15px;	
 		background-color: #f8f8f1;
 
 		h3 {
 			color: #d9524e;
 		}
+
+		ul {
+			margin-bottom: 0;
+
+			li {
+				i {
+					color: #d9524e;
+				}
+			}
+		}
 	}
+}
+
+.section-contact {
+	margin-top: 15px;
 }
