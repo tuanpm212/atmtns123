@@ -99,7 +99,6 @@
 	.box-shadow(@z-depth-5);
 }
 
-
 body {
 	background-color: @body-bg;
 	color: @body-color;
@@ -108,6 +107,10 @@ body {
 		padding-top: 30px;
 		padding-bottom: 30px;
 	}
+}
+
+hr {
+	border-color: #f4f3ef;
 }
 
 .oil-theme {
@@ -383,4 +386,78 @@ body {
 
 .section-contact {
 	margin-top: 15px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #f4f3ef;
+
+	.google-map {
+		margin-bottom: 15px;
+	}
+
+	.contact-address {
+
+		.item {
+			margin-bottom: 15px;
+
+			i {
+				background-color: #f3f5ea;
+				border: 1px solid #e7eada;
+				width: 36px;
+				line-height: 36px;
+				color: #d9524e;
+				text-align: center;
+				float: left;
+				font-size: 16px;
+				position: absolute;
+				left: 15px;
+			}
+
+			h5 {
+				color: #d9524e;
+				margin-top: 0;
+				margin-bottom: 5px;
+				margin-left: 51px;
+			}
+
+			a, p {
+				margin-left: 51px;
+				margin-bottom: 0px;
+			}
+		}
+	}
+
+	.contact-form {
+
+		textarea {
+			height: 113px;
+			resize: none;
+		}
+	}
+}
+
+.section-video {
+	.video-content {
+		background-color: #f8f8f1;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+	}
+
+	.video-player {
+		h4 {
+			display: inline-block;
+		}
+	}
+
+	.video-thumnail {
+		img {
+			max-width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+		}
+
+		.slimScrollBar {
+			border-radius: 0 !important;
+		}
+	}
 }

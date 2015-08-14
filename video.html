@@ -98,63 +98,43 @@
         </nav>
       </div>
 
-      <section class="section-contact">
-        <h3>Liên hệ</h3>
+      <section class="section-video clearfix">
+        <h3>Video</h3>
         <hr>
-        <div class="row">
-          <div class="col-sm-6 col-sm-push-6 clearfix">
-            <div id="map" class="google-map" style="height: 279px"></div>
-            <hr class="visible-xs-block">
-            <div class="row contact-address">
-              <div class="col-sm-6">
-                <div class="item">
-                  <i class="fa fa-map-marker"></i>
-                  <h5>Địa chỉ</h5>
-                  <p>Số 1 Phan Chí Thọ, Phường Tân Thuận, Quận 7, HCM.</p>
-                </div>
-                <div class="item">
-                  <i class="fa fa-phone"></i>
-                  <h5>Điện thoại</h5>
-                  <a href="tel:1-800-455-5777">1-800-455-5777</a>
-                </div>
+        <div class="col-sm-12 video-content">
+          <div class="row">
+            <div class="col-sm-9 video-player">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/YhYq6X4Vq-4?&theme=dark&color=white&autohide=2&modestbranding=1&fs=0&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe>
               </div>
-              <div class="col-sm-6">
-                <div class="item">
-                  <i class="fa fa-envelope-o"></i>
-                  <h5>Email</h5>
-                  <a href="mailto:truc.truong09@gmail.com">truc.truong09@gmail.com</a>
-                </div>
-                <div class="item">
-                  <i class="fa fa-skype"></i>
-                  <h5>Skype</h5>
-                  <a href="skype:truc.truong">truc.truong</a>
-                </div>
-                <hr class="visible-xs-block">
-              </div>
+              <h4>Constructive Media - AOG 2013 Showreel</h4> - <i>10/05/2013</i>
+              <p>Ngành công nghiệp dầu khí, như trình bày tại Australasian Oil & Gas triển lãm vào tháng Hai năm 2013</p>
             </div>
-          </div>
-          <div class="col-sm-6 col-sm-pull-6 clearfix">
-            <form class="contact-form">
-              <div class="form-group">
-                <label>Họ và tên</label>
-                <input type="text" class="form-control" placeholder="Nhập họ và tên">
-              </div>
-              <div class="form-group">
-                <label>Email</label>
-                <input type="text" class="form-control" placeholder="Nhập email">
-              </div>
-              <div class="form-group">
-                <label>Chủ đề</label>
-                <input type="text" class="form-control" placeholder="Nhập chủ đề">
-              </div>
-              <div class="form-group">
-                <label>Nội dung</label>
-                <textarea class="form-control" placeholder="Nhập nội dung" rows="7"></textarea>
-              </div>
-              <div class="form-group text-right">
-                <button class="btn btn-default">Gửi</button>
-              </div>
-            </form>
+            <div class="col-sm-3 video-thumnail">
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#">
+                    <img src="http://img.youtube.com/vi/YhYq6X4Vq-4/hqdefault.jpg">
+                    <h5>Video 1</h5>
+                    <p><i>09/10/2015</i></p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="http://img.youtube.com/vi/YhYq6X4Vq-4/hqdefault.jpg">
+                    <h5>Video 1</h5>
+                    <p><i>09/10/2015</i></p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="http://img.youtube.com/vi/YhYq6X4Vq-4/hqdefault.jpg">
+                    <h5>Video 1</h5>
+                    <p><i>09/10/2015</i></p>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -188,37 +168,19 @@
     <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
     <script type="text/javascript" src="js/modernizr.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+    <script type="text/javascript" src="js/jquery.slimscroll.js"></script>
     <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 17,
-          scrollwheel: false,
-          streetViewControl: false,
-          disableDoubleClickZoom: true,
-          center: {lat: 10.7983161, lng: 106.7524634},
+      $(function(){
+        var height = $('.video-player').height();
+        $('.video-thumnail ul').slimscroll({
+          height: height,
+          color: '#ACAA8E',
         });
 
-        var marker = new google.maps.Marker({
-          map: map,
-          place: {
-            location: {lat: 10.7983161, lng: 106.7524634},
-            query: 'Số 1 Mai Chí Thọ'
-          },
-          attribution: {
-            source: 'Google Maps JavaScript API',
-            webUrl: 'https://developers.google.com/maps/'
-          }
+        $('.video-thumnail ul').slimScroll().bind('slimscroll', function(e, pos) {
+          console.log("Reached " + pos);
         });
-
-        var infoWindow = new google.maps.InfoWindow({
-          content: 'Căn hộ Lexington Residence'
-        });
-
-        marker.addListener('click', function() {
-          infoWindow.open(map, marker);
-        });
-      }
+      })
     </script>
   </body>
 </html>
