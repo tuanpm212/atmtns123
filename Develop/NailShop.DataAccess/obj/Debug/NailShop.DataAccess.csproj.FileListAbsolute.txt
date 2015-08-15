@@ -1,0 +1,17 @@
+C:\Users\truc.trg09gmail.com\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\NailShop.DataAccess.dll.config
+C:\Users\truc.trg09gmail.com\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\NailShop.DataAccess.dll
+C:\Users\truc.trg09gmail.com\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\NailShop.DataAccess.pdb
+C:\Users\truc.trg09gmail.com\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\truc.trg09gmail.com\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\truc.trg09gmail.com\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\truc.trg09gmail.com\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\truc.trg09gmail.com\Dropbox\Nail 123\Develop\NailShop.DataAccess\obj\Debug\NailShop.DataAccess.dll
+C:\Users\truc.trg09gmail.com\Dropbox\Nail 123\Develop\NailShop.DataAccess\obj\Debug\NailShop.DataAccess.pdb
+C:\Users\truc.trg09gmail.com\Dropbox\Nail 123\Develop\NailShop.DataAccess\obj\Debug\NailShop.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\tuan.pham\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\NailShop.DataAccess.dll.config
+C:\Users\tuan.pham\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\NailShop.DataAccess.dll
+C:\Users\tuan.pham\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\NailShop.DataAccess.pdb
+C:\Users\tuan.pham\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\tuan.pham\Dropbox\Nail 123\Develop\NailShop.DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\tuan.pham\Dropbox\Nail 123\Develop\NailShop.DataAccess\obj\Debug\NailShop.DataAccess.dll
+C:\Users\tuan.pham\Dropbox\Nail 123\Develop\NailShop.DataAccess\obj\Debug\NailShop.DataAccess.pdb
