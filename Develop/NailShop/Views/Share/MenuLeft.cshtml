@@ -15,57 +15,258 @@
                     @{
                         if (ViewBag.IsAdmin)
                         {
-                            <li class="active">
-                                <a href="/admin/video">
-                                    <i class="fa fa-video-camera icon">
-                                        <b class="bg-info dker"></b>
-                                    </i>
-                                    <span>Video</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/admin/photo">
-                                    <i class="fa fa-photo icon">
-                                        <b class="bg-primary dker"></b>
-                                    </i>
-                                    <span>Photo</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/admin/about">
-                                    <i class="fa fa-info-circle icon">
-                                        <b class="bg-danger"></b>
-                                    </i>
-                                    <span>About</span>
-                                </a>
-                            </li>
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "VIDEO" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATEVIDEO")
+                            {
+                                <li class="active">
+                                    <a href="/admin/video">
+                                        <i class="fa fa-video-camera icon">
+                                            <b class="bg-info dker"></b>
+                                        </i>
+                                        <span>Video</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/admin/video">
+                                        <i class="fa fa-video-camera icon">
+                                            <b class="bg-info dker"></b>
+                                        </i>
+                                        <span>Video</span>
+                                    </a>
+                                </li>
+                            }
+
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "PHOTO" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATEPHOTO")
+                            {
+                                <li class="active">
+                                    <a href="/admin/photo">
+                                        <i class="fa fa-photo icon">
+                                            <b class="bg-primary dker"></b>
+                                        </i>
+                                        <span>Photo</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/admin/photo">
+                                        <i class="fa fa-photo icon">
+                                            <b class="bg-primary dker"></b>
+                                        </i>
+                                        <span>Photo</span>
+                                    </a>
+                                </li>
+                            }
+
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "ABOUT")
+                            {
+                                <li class="active">
+                                    <a href="/admin/about">
+                                        <i class="fa fa-info-circle icon">
+                                            <b class="bg-danger"></b>
+                                        </i>
+                                        <span>About</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/admin/about">
+                                        <i class="fa fa-info-circle icon">
+                                            <b class="bg-danger"></b>
+                                        </i>
+                                        <span>About</span>
+                                    </a>
+                                </li>
+                            }
+
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "SLIDE" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATESLIDE")
+                            {
+                                <li class="active">
+                                    <a href="/admin/slide">
+                                        <i class="fa fa-play-circle icon">
+                                            <b class="bg-warning"></b>
+                                        </i>
+                                        <span>Slide</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/admin/slide">
+                                        <i class="fa fa-play-circle icon">
+                                            <b class="bg-warning"></b>
+                                        </i>
+                                        <span>Slide</span>
+                                    </a>
+                                </li>
+                            }
+
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "WELCOME")
+                            {
+                                <li class="active">
+                                    <a href="/admin/welcome">
+                                        <i class="fa fa-smile-o icon">
+                                            <b class="bg-success"></b>
+                                        </i>
+                                        <span>Welcome</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/admin/welcome">
+                                        <i class="fa fa-smile-o icon">
+                                            <b class="bg-success"></b>
+                                        </i>
+                                        <span>Welcome</span>
+                                    </a>
+                                </li>
+                            }
+
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "BRAND" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATEBRAND")
+                            {
+                                <li class="active">
+                                    <a href="/admin/brand">
+                                        <i class="fa fa-suitcase icon">
+                                            <b class="bg-info dker"></b>
+                                        </i>
+                                        <span>Brands</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/admin/brand">
+                                        <i class="fa fa-suitcase icon">
+                                            <b class="bg-info dker"></b>
+                                        </i>
+                                        <span>Brands</span>
+                                    </a>
+                                </li>
+                            }
+
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "PRODUCTHOT" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATEPRODUCTHOT")
+                            {
+                                <li class="active">
+                                    <a href="/admin/producthot">
+                                        <i class="fa fa-shopping-cart icon">
+                                            <b class="bg-primary dker"></b>
+                                        </i>
+                                        <span>Product Hot</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/admin/producthot">
+                                        <i class="fa fa-shopping-cart icon">
+                                            <b class="bg-primary dker"></b>
+                                        </i>
+                                        <span>Product Hot</span>
+                                    </a>
+                                </li>
+                            }
+
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "NEWS" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATENEWS")
+                            {
+                                <li class="active">
+                                    <a href="/admin/news">
+                                        <i class="fa fa-newspaper-o icon">
+                                            <b class="bg-danger dker"></b>
+                                        </i>
+                                        <span>News</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/admin/news">
+                                        <i class="fa fa-newspaper-o icon">
+                                            <b class="bg-danger dker"></b>
+                                        </i>
+                                        <span>News</span>
+                                    </a>
+                                </li>
+                            }
                         }
                         else
                         {
-                            <li>
-                                <a href="/backend/order">
-                                    <i class="fa fa-shopping-cart icon">
-                                        <b class="bg-warning"></b>
-                                    </i>
-                                    <span>Order</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/backend/promotion">
-                                    <i class="fa fa-bullhorn icon">
-                                        <b class="bg-success dker"></b>
-                                    </i>
-                                    <span>Promotion Item</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/backend/PromotionCategory">
-                                    <i class="fa fa-certificate icon">
-                                        <b class="bg-success dker"></b>
-                                    </i>
-                                    <span>Promotion Category</span>
-                                </a>
-                            </li>
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "ORDER" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATEORDER")
+                            {
+                                <li class="active">
+                                    <a href="/backend/order">
+                                        <i class="fa fa-shopping-cart icon">
+                                            <b class="bg-warning"></b>
+                                        </i>
+                                        <span>Order</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/backend/order">
+                                        <i class="fa fa-shopping-cart icon">
+                                            <b class="bg-warning"></b>
+                                        </i>
+                                        <span>Order</span>
+                                    </a>
+                                </li>
+                            }
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "PROMOTION" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATEPROMOTION")
+                            {
+                                <li class="active">
+                                    <a href="/backend/promotion">
+                                        <i class="fa fa-bullhorn icon">
+                                            <b class="bg-success dker"></b>
+                                        </i>
+                                        <span>Promotion Item</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/backend/promotion">
+                                        <i class="fa fa-bullhorn icon">
+                                            <b class="bg-success dker"></b>
+                                        </i>
+                                        <span>Promotion Item</span>
+                                    </a>
+                                </li>
+                            }
+                            if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "PROMOTIONCATEGORY" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATEPROMOTIONCATEGORY")
+                            {
+                                <li class="active">
+                                    <a href="/backend/PromotionCategory">
+                                        <i class="fa fa-certificate icon">
+                                            <b class="bg-danger dker"></b>
+                                        </i>
+                                        <span>Promotion Category</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/backend/PromotionCategory">
+                                        <i class="fa fa-certificate icon">
+                                            <b class="bg-danger dker"></b>
+                                        </i>
+                                        <span>Promotion Category</span>
+                                    </a>
+                                </li>
+                            }
                         }
                     }
                 </ul>
@@ -75,30 +276,6 @@
     </section>
 
     <footer class="footer lt hidden-xs b-t b-dark">
-        <div id="chat" class="dropup">
-            <section class="dropdown-menu on aside-md m-l-n">
-                <section class="panel bg-white">
-                    <header class="panel-heading b-b b-light">Active chats</header>
-                    <div class="panel-body animated fadeInRight">
-                        <p class="text-sm">No active chats.</p>
-                        <p><a href="#" class="btn btn-sm btn-default">Start a chat</a></p>
-                    </div>
-                </section>
-            </section>
-        </div>
-        <div id="invite" class="dropup">
-            <section class="dropdown-menu on aside-md m-l-n">
-                <section class="panel bg-white">
-                    <header class="panel-heading b-b b-light">
-                        John <i class="fa fa-circle text-success"></i>
-                    </header>
-                    <div class="panel-body animated fadeInRight">
-                        <p class="text-sm">No contacts in your lists.</p>
-                        <p><a href="#" class="btn btn-sm btn-facebook"><i class="fa fa-fw fa-facebook"></i> Invite from Facebook</a></p>
-                    </div>
-                </section>
-            </section>
-        </div>
         <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-default btn-icon">
             <i class="fa fa-angle-left text"></i>
             <i class="fa fa-angle-right text-active"></i>

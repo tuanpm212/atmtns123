@@ -33,6 +33,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="NailSyn.DataAccess">
       <HintPath>..\DLL\NailSyn.DataAccess.dll</HintPath>
     </Reference>
@@ -55,9 +58,11 @@
     <Compile Include="Business\BrandBO.cs" />
     <Compile Include="Business\OrderBO.cs" />
     <Compile Include="Business\PhotoBO.cs" />
+    <Compile Include="Business\ProductHotBO.cs" />
     <Compile Include="Business\PromotionBO.cs" />
     <Compile Include="Business\SlideBO.cs" />
     <Compile Include="Business\StoreBO.cs" />
+    <Compile Include="Business\WelcomeBO.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="IBusiness\IAbout.cs" />
     <Compile Include="IBusiness\IBrand.cs" />
@@ -67,9 +72,11 @@
     <Compile Include="IBusiness\INews.cs" />
     <Compile Include="IBusiness\IOrder.cs" />
     <Compile Include="IBusiness\IPhoto.cs" />
+    <Compile Include="IBusiness\IProductHot.cs" />
     <Compile Include="IBusiness\IPromotion.cs" />
     <Compile Include="IBusiness\ISlide.cs" />
     <Compile Include="IBusiness\IStore.cs" />
+    <Compile Include="IBusiness\IWelcome.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\ModelWeb.cs" />

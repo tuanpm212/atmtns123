@@ -51,6 +51,7 @@ namespace NailShop.Controllers
                 
                 if (_session.IsLogin && !_session.IsStore)
                 {
+                    ViewBag.IsEdit = true;
                     IOrder _ord = new OrderBO();
                     Business.Model.ModelWeb.InvoiceModel model = new Business.Model.ModelWeb.InvoiceModel();
                     model = _ord.GetOrderByID(_session.StoreID, _session.CustomerID, ID);
@@ -110,10 +111,10 @@ namespace NailShop.Controllers
                         ViewBag.StateShip = model.Invoice.StateShip;
 
                         ViewBag.InvoiceNo = model.Invoice.InvoiceNo;
-                        ViewBag.Amount = model.Invoice.SubTotal.ToString();
-                        ViewBag.DiscountAmount = model.Invoice.Discount.ToString();
-                        ViewBag.TaxAmount = model.Invoice.SaleTax.ToString();
-                        ViewBag.TotalAmount = model.Invoice.Total.ToString();
+                        ViewBag.Amount = string.Format("{0:#,###0}", model.Invoice.SubTotal);
+                        ViewBag.DiscountAmount = string.Format("{0:#,###0}", model.Invoice.Discount);
+                        ViewBag.TaxAmount = string.Format("{0:#,###0}", model.Invoice.SaleTax);
+                        ViewBag.TotalAmount = string.Format("{0:#,###0}", model.Invoice.Total);
                         ViewBag.IsTemplate = model.Invoice.IsTemplate;
                     }
                     ViewBag.OrdID = ID;
@@ -126,6 +127,8 @@ namespace NailShop.Controllers
         #endregion
 
         #region Json Data
+
+            [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
             public JsonResult GetOrdItem(long ID)
             {
                 IOrder _ord = new OrderBO();
@@ -133,6 +136,8 @@ namespace NailShop.Controllers
                 string jsonData = new JavaScriptSerializer().Serialize(data);
                 return Json(jsonData, JsonRequestBehavior.AllowGet);
             }
+
+            [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
             public JsonResult GetInvoice(DateTime FromDate, DateTime ToDate, int Status)
             {
                 if (_session.IsLogin && !_session.IsStore)
@@ -210,7 +215,7 @@ namespace NailShop.Controllers
                             mRow.NoTax = row.NoTax;
                             mRow.Qty = row.Qty;
                             mRow.Price = row.Price;
-                            mRow.Discount = mRow.Discount;
+                            mRow.Discount = row.Discount;
                             mRow.Total = row.Total;
                             if (invoice.InvoiceID == -1)
                                 mRow.RecordState = (int)NailShop.Business.Enum.RecordState.AddNew;
@@ -239,6 +244,7 @@ namespace NailShop.Controllers
                 return Json(new { IsOk = data }, JsonRequestBehavior.AllowGet);
             }
 
+            [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
             public JsonResult GetPromotionRule()
             {
                 string jsonData = "[]";

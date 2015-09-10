@@ -7,21 +7,22 @@
 <section class="scrollable padder">
     <div class="m-b-md">
         <h3 class="m-b-none">@Resources.Backend.headAbout</h3>
+        <hr />
     </div>
-    <div class="form-group">
-        <div id="divValue" class="col-sm-12">
-            @*<textarea id="description" style="height:450px">@Model.Contents</textarea>*@
-            @Html.TextArea("description", @Model.Contents)
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-4">
-            <div>
-                <button id="btnSave" type="submit" class="btn btn-primary">@Resources.Backend.btnSave</button>
+    <form id="formWelcome" class="form-horizontal">
+        <div class="form-group">
+            <div id="divValue" class="col-sm-12" style="height:450px">
+                @Html.TextArea("description", @Model.Contents)
             </div>
-            
         </div>
-    </div>
+        <div class="form-group">
+            <div class="col-sm-4">
+                <div>
+                    <button id="btnSave" type="submit" class="btn btn-primary">@Resources.Backend.btnSave</button>
+                </div>
+            </div>
+        </div>
+    </form>
     <div class="modal fade" id="modalConfirm" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -40,15 +41,14 @@
     </div>
 </section>
 @section Styles {
-    <link href="~/contents/assets/css/kendo.common.css" rel=" stylesheet" />
-    <link href="~/contents/assets/css/kendo.default.css" rel=" stylesheet" />
+    <link href="~/Contents/css/kendo.common.css" rel="stylesheet" />
+    <link href="~/Contents/css/kendo.office365.css" rel="stylesheet" />
 }
 
 @section Scripts {
-    <script src="~/contents/assets/js/kendo.js"></script>
-    <script src="~/contents/assets/js/function.js"></script>
+    <script src="~/Scripts/kendo.js"></script>
+    <script src="~/Scripts/function.js"></script>
     <script>
-        //config upload image browse
         var MRT_ReadImageURL = "@Url.Action("Index", "Mediamanager", new { area = "" })";
         var MRT_DestroyImageURL = "@Url.Action("Destroy", "Mediamanager", new { area = "" })";
         var MRT_CreateImageURL = "@Url.Action("Create", "Mediamanager", new { area = "" })";
@@ -60,11 +60,10 @@
         loadEditor("#description");
 
         $('#btnSave').click(function () {
-           
             var aboutlang = {
                 AboutID: 1,
                 LangID: 'en-US',
-                Contents: $('#description').text()
+                Contents: $('#description').data("kendoEditor").value()
             };
             $.ajax({
                 url: '/admin/About',

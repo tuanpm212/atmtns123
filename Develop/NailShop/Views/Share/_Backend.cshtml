@@ -7,12 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="truc.trg09@gmail.com">
     <meta name="author" content="truc.truong">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <link rel="icon" href="../../favicon.ico">
     <title>@ViewBag.Title</title>
-
+    @*@Scripts.Render("~/scripts/owl.carousel.js")*@
     <link href="~/Contents/css/bootstrap.css" rel="stylesheet" />
     <link href="~/Contents/css/animate.css" rel="stylesheet" />
-    <link href="~/Contents/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Contents/css/font-awesome.css" rel="stylesheet" />
     <link href="~/Contents/css/app.css" rel="stylesheet" />
     @RenderSection("Styles", false)
 </head>
@@ -39,7 +43,7 @@
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/app.js"></script>
     <script src="~/Scripts/app.plugin.js"></script>
-    <script src="~/Scripts/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/jquery.slimscroll.js"></script>
     @RenderSection("Scripts", false)
     <script type="text/javascript">
         $('#linkLogout').click(function () {
@@ -48,7 +52,7 @@
                 type: 'Post',
                 success: function (data) {
                     if (data.IsOk) {
-                        window.location.href = "/Backend";
+                        window.location.href = '@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))';
                     }
                 }
             });

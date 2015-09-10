@@ -488,9 +488,9 @@ warning 6002: The table/view 'NailShop.dbo.SynOrderItems' does not have a primar
     </Key>
     <Property Name="OrdItemID" Type="bigint" Nullable="false" />
     <Property Name="InvoiceID" Type="bigint" Nullable="false" />
-    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="16" />
-    <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
     <Property Name="ProdNo" Type="nvarchar" MaxLength="64" />
+    <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="16" />
     <Property Name="ProductID" Type="int" Nullable="false" />
     <Property Name="ProductName" Type="nvarchar(max)" />
     <Property Name="Description" Type="nvarchar(max)" />
@@ -835,18 +835,6 @@ warning 6002: The table/view 'NailShop.dbo.vw_Slide' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_NewsLang_Language">
-    <End Role="Language" Type="Self.Language" Multiplicity="1" />
-    <End Role="NewsLang" Type="Self.NewsLang" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Language">
-        <PropertyRef Name="LangID" />
-      </Principal>
-      <Dependent Role="NewsLang">
-        <PropertyRef Name="LangID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_NewsLang_News">
     <End Role="News" Type="Self.News" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -917,7 +905,7 @@ warning 6002: The table/view 'NailShop.dbo.vw_Slide' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SlideLang_Slide">
+  <Association Name="FK_SlideLang_Slide1">
     <End Role="Slide" Type="Self.Slide" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -1098,9 +1086,9 @@ warning 6002: The table/view 'NailShop.dbo.vw_Slide' does not have a primary key
       <DefiningQuery>SELECT 
     [SynOrderItems].[OrdItemID] AS [OrdItemID], 
     [SynOrderItems].[InvoiceID] AS [InvoiceID], 
-    [SynOrderItems].[InvoiceNo] AS [InvoiceNo], 
-    [SynOrderItems].[BarCode] AS [BarCode], 
     [SynOrderItems].[ProdNo] AS [ProdNo], 
+    [SynOrderItems].[BarCode] AS [BarCode], 
+    [SynOrderItems].[InvoiceNo] AS [InvoiceNo], 
     [SynOrderItems].[ProductID] AS [ProductID], 
     [SynOrderItems].[ProductName] AS [ProductName], 
     [SynOrderItems].[Description] AS [Description], 
@@ -1337,10 +1325,6 @@ warning 6002: The table/view 'NailShop.dbo.vw_Slide' does not have a primary key
       <End Role="Brand" EntitySet="Brand" />
       <End Role="BrandLang" EntitySet="BrandLang" />
     </AssociationSet>
-    <AssociationSet Name="FK_NewsLang_Language" Association="Self.FK_NewsLang_Language">
-      <End Role="Language" EntitySet="Language" />
-      <End Role="NewsLang" EntitySet="NewsLang" />
-    </AssociationSet>
     <AssociationSet Name="FK_NewsLang_News" Association="Self.FK_NewsLang_News">
       <End Role="News" EntitySet="News" />
       <End Role="NewsLang" EntitySet="NewsLang" />
@@ -1361,7 +1345,7 @@ warning 6002: The table/view 'NailShop.dbo.vw_Slide' does not have a primary key
       <End Role="Photo" EntitySet="Photo" />
       <End Role="PhotoLang" EntitySet="PhotoLang" />
     </AssociationSet>
-    <AssociationSet Name="FK_SlideLang_Slide" Association="Self.FK_SlideLang_Slide">
+    <AssociationSet Name="FK_SlideLang_Slide1" Association="Self.FK_SlideLang_Slide1">
       <End Role="Slide" EntitySet="Slide" />
       <End Role="SlideLang" EntitySet="SlideLang" />
     </AssociationSet>

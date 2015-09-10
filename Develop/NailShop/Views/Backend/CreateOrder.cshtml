@@ -7,6 +7,7 @@
     <section class="scrollable padder">
         <div class="m-b-md">
             <h3 class="m-b-none">@Resources.CreateOrder.titleForm</h3>
+            <hr />
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -53,6 +54,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-3">
+                            <button id="btnSave" type="submit" data-ng-click="addNew()" ng-hide="IsHidden" class="btn btn-primary">@Resources.CreateOrder.btnSave</button>
                             <a href="/backend/order" class="btn btn-primary">@Resources.CreateOrder.btnBack</a>
                         </div>
                     </div>
@@ -84,152 +86,104 @@
                     </div>
                     <div class="form-group form-inline">
                         <div class="col-sm-12 text-right">
-                            <p class="control-label">@Resources.CreateOrder.lblNo  @Html.Label((string)@ViewBag.InvoiceNo, new { id = "lblInvoiceNo" })</></p>
+                            <p class="control-label">@Resources.CreateOrder.lblNo  @Html.Label((string)@ViewBag.InvoiceNo, new { id = "lblInvoiceNo" })</p>
                             <p class="control-label">@Resources.CreateOrder.lblOrdDate  @Html.Label((string)@ViewBag.InvoiceDate, new { id = "lblInvoiceDate" })</p>
-                            <p class="control-label">@Resources.CreateOrder.lblAmount $@Html.Label((string)@ViewBag.Amount, new { id = "lblAmount" })</p>
-                            <p class="control-label">@Resources.CreateOrder.lblDiscount $@Html.Label((string)@ViewBag.DiscountAmount, new { id = "lblDiscountAmount" })</p>
-                            <p class="control-label">@Resources.CreateOrder.lblTaxAmount $@Html.Label((string)@ViewBag.TaxAmount, new { id = "lblTaxAmount" })</p>
-                            <p class="control-label">@Resources.CreateOrder.lblTotal $@Html.Label((string)@ViewBag.TotalAmount, new { id = "lblTotalAmount" })</p>
+                            <p class="control-label">@Resources.CreateOrder.lblAmount $@ViewBag.Amount</p>
+                            <p class="control-label">@Resources.CreateOrder.lblDiscount $@ViewBag.DiscountAmount</p>
+                            <p class="control-label">@Resources.CreateOrder.lblTaxAmount $@ViewBag.TaxAmount</p>
+                            <p class="control-label">@Resources.CreateOrder.lblTotal $@ViewBag.TotalAmount</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="table-responsive">
-            <div ng-grid="gridOptions"></div>
-        </div>
+        <div ui-grid="gridOptions" ui-grid-pagination ui-grid-edit class="myGrid table" style="height: 372px;"></div>
     </section>
 </section>
 @section Styles {
-    <link href="~/Contents/css/ng-grid.css" rel="stylesheet" />
+    <link href="~/Contents/css/ui-grid.css" rel="stylesheet" />
+    <link href="~/Contents/css/backend-ui-grid.css" rel="stylesheet" />
 }
-@section Scripts {
-    <script src="~/Scripts/AngularJs/1.3.8.angular.min.js"></script>
-    <script src="~/Scripts/AngularJs/ng-grid.debug.js"></script>
-    <script src="~/Scripts/AngularJs/1.0.2.angular.min.js"></script>
 
+@section Scripts {
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/ui-grid.js"></script>
     <script>
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover();
         });
         var OrdID = @ViewBag.OrdID, myjson, isFristLoad=true;
-        var app = angular.module('MyApp', ['ngGrid']);
+        var app = angular.module('MyApp', ['ui.grid', 'ui.grid.pagination', 'ui.grid.edit']);
         app.controller('MainController', ['$scope', '$http', function ($scope, $http, $apply) {
-            $scope.filterOptions = {
-                filterText: "",
-                useExternalFilter: true
+            $scope.IsHidden = true;
+            $scope.gridOptions = {
+                enableSorting: true,
+                enableColumnMenus: false,
+                paginationPageSizes: [10, 20, 40],
+                paginationPageSize: 10,
+                columnDefs: [
+                    { name: "ProdNo", width: '150', displayName: "@Resources.CreateOrder.gridNo", enableCellEdit: false, headerCellClass: 'text-center', cellClass: 'text-center'},
+                    { name: "ProductName", displayName: "@Resources.CreateOrder.gridName", enableCellEdit: false, headerCellClass: 'text-center' },
+                    { name: "Price",  width: '100', displayName: "@Resources.CreateOrder.gridPrice", enableCellEdit: false, headerCellClass: 'text-center', cellClass: 'text-right'},
+                    { name: "Qty",  width: '100', displayName: "@Resources.CreateOrder.gridQty", enableCellEdit: true, headerCellClass: 'text-center', cellClass: 'text-right' },
+                    { name: "Discount",  width: '100', displayName: "@Resources.CreateOrder.gridDiscount", enableCellEdit: true, headerCellClass: 'text-center', cellClass: 'text-right'},
+                    { name: "Total",  width: '100', displayName: "@Resources.CreateOrder.gridTotal", enableCellEdit: false, headerCellClass: 'text-center', cellClass: 'text-right'}
+                ]
             };
 
-            $scope.totalServerItems = 0;
-            $scope.pagingOptions = {
-                pageSizes: [10, 20, 40],
-                pageSize:10,
-                currentPage: 1
-            };
-
-            $scope.setPagingData = function (data, page, pageSize) {
-                var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-                $scope.myData = pagedData;
-                $scope.totalServerItems = data.length;
-                if (!$scope.$$phase) {
-                    $scope.$apply();
-                }
-            };
             $scope.getPagedDataAsync = function (pageSize, page, searchText) {
+                if (pageSize == null) {
+                    $scope.gridOptions.paginationPageSize = 10;
+                    pageSize = 10;
+                }
+                if (page == null) {
+                    $scope.gridOptions.paginationCurrentPage = 1;
+                    page = 1;
+                }
                 if(isFristLoad)
                 {
                     isFristLoad=false;
                     $http({
-                        url: "/backend/GetOrdItem?id="+ OrdID,
-                        method: "GET"
-
+                        url: "/backend/GetOrdForBackend?id="+ OrdID,
+                        method: "GET",
+                        cache: false,
                     }).success(function (data, status, headers, config) {
-                        myjson = JSON.parse(JSON.parse(data));
-                        $scope.setPagingData(myjson, page, pageSize);
-                        SumTotalAmount(myjson);
+                        myjson = JSON.parse(data);
+                        $scope.gridOptions.data = myjson;
                     }).error(function (data, status, headers, config) {
                         alert(JSON.stringify(data));
                     });
                 }
-                else
-                {
-                    $scope.setPagingData(myjson, page, pageSize);
-                }
             };
 
-            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+            $scope.getPagedDataAsync($scope.gridOptions.paginationCurrentPage, $scope.gridOptions.paginationPageSize);
 
-            $scope.$watch('pagingOptions', function (newVal, oldVal) {
-                if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
-                    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-                }
-            }, true);
-            $scope.$watch('filterOptions', function (newVal, oldVal) {
-                if (newVal !== oldVal) {
-                    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-                }
-            }, true);
-
-            $scope.gridOptions = {
-                data: 'myData',
-                columnDefs: [
-                { field: "ProdNo", displayName: '@Resources.CreateOrder.gridNo', width: "120",  enableCellEdit: false, headerClass: 'ngHeader-Center', cellClass: 'ngCellText-Center'},
-                { field: "ProductName", displayName: '@Resources.CreateOrder.gridName', pinnable: true, enableCellEdit: false},
-                { field: "Price", displayName: '@Resources.CreateOrder.gridPrice', pinnable: true, width: "120",  enableCellEdit: false, cellFilter:"number:2",  headerClass: 'ngHeader-Right', cellClass: 'ngCellText-Right'},
-                { field: "Qty", displayName: '@Resources.CreateOrder.gridQty', pinnable: true, width: "120", enableCellEdit: true, cellFilter:"number:0",  headerClass: 'ngHeader-Right', cellClass: 'ngCellText-Right'},
-                { field: "Discount", displayName: '@Resources.CreateOrder.gridDiscount', pinnable: true, width: "120",  enableCellEdit: false, cellFilter:"number:2",  headerClass: 'ngHeader-Right', cellClass: 'ngCellText-Right' },
-                { field: "Total", displayName: '@Resources.CreateOrder.gridTotal', pinnable: true, width: "150",  enableCellEdit: false, cellFilter:"number:2",  headerClass: 'ngHeader-Right', cellClass: 'ngCellText-Right'}
-                ],
-                enablePaging: true,
-                showFooter: true,
-                totalServerItems: 'totalServerItems',
-                pagingOptions: $scope.pagingOptions,
-                filterOptions: $scope.filterOptions,
-                sortInfo: $scope.sortOptions,
-                totalServerItems: "totalServerItems",
-                enableCellSelection: true,
-                enableCellEdit: true,
-                enableRowSelection: false,
-                enableColumnReordering: true,
-                headerRowHeight: 31,
-                rowHeight: 31,
-                i18n: "en"
+            $scope.gridOptions.onRegisterApi = function(gridApi) {
+                $scope.gridApi = gridApi;
+                gridApi.edit.on.afterCellEdit($scope, function(rowEntity, colDef, newValue, oldValue) {
+                    if (newValue != oldValue) {
+                        $scope.IsHidden = false;
+                    };
+                });
             };
 
-            //---Edit value changed---//
-            $scope.$on('ngGridEventEndCellEdit', function(evt){
-                if(evt.targetScope.row.entity.Qty>=0)
-                {
-                    var total=0, discount=0, price=0, quantity=0;
-                    quantity = evt.targetScope.row.entity.Qty;
-                    price = evt.targetScope.row.entity.Price;
-                    discount = evt.targetScope.row.entity.Discount * quantity;
-                    total = quantity*price - discount;
-                    evt.targetScope.row.entity.Total = total;
-                    SumTotalAmount($scope.myData);
-                }
-                else
-                {
-                    alert('@Resources.CreateOrder.msgQuantity');
-                    evt.targetScope.row.entity.Qty = 0;
-                }
-                $scope.$apply();
-            });
+            $scope.addNew = function ()
+            {
+                var Invoice={InvoiceID: OrdID, Address: $('#BillAddress').val(), AddressAddr1S: $('#DeliveryAddress').val(), Notes: $('#Description').val(),
+                    City: $('#City').val(), State: $('#State').val(), ZipCode: $('#ZipCode').val(),
+                    CityShip: $('#CityShip').val(), StateShip: $('#StateShip').val(), ZipCodeShip: $('#ZipCodeShip').val(),
+                    SubTotal: $('#lblAmount').html(), SaleTax: $('#lblTaxAmount').html(), Discount: $('#lblDiscountAmount').html(), Total: $('#lblTotalAmount').html(), IsTemplate: $('#IsTemplate').val()};
+                $http({
+                    url: "/Order/SaveData",
+                    method: "Post",
+                    data:{invoice: Invoice, ordItems: $scope.gridOptions.data}
+                }).success(function (data) {
+                    if(data.IsOk)
+                        window.location.href="/backend/order";
+                });
+            };
         }]);
 
-        function SumTotalAmount(json)
-        {
-            var Total=0, Discount=0, TaxAmount=0, Amount=0;
-            for(var i=0; i<json.length; i++)
-            {
-                Amount+=json[i].Price*json[i].Qty;
-            }
-            Total=Amount+TaxAmount - Discount;
-            $('#lblAmount').html(Amount);
-            $('#lblDiscountAmount').html(Discount);
-            $('#lblTaxAmount').html(TaxAmount);
-            $('#lblTotalAmount').html(Total);
-        }
         IsEdit();
         function IsEdit()
         {

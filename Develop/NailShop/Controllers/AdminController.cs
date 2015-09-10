@@ -21,13 +21,12 @@ namespace NailShop.Controllers
         #endregion
 
         #region Photo
-
             public ActionResult Photo()
             {
                 if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
                     return View();
                 else
-                    return RedirectToAction("index", "backend");
+                    return RedirectToAction("index", "admin");
             }
 
             public ActionResult CreatePhoto(long id)
@@ -38,7 +37,7 @@ namespace NailShop.Controllers
                     return View();
                 }
                 else
-                    return RedirectToAction("index", "backend");
+                    return RedirectToAction("index", "admin");
             }
         #endregion
 
@@ -70,12 +69,12 @@ namespace NailShop.Controllers
                         ViewBag.Name = "";
                         ViewBag.Description = "";
                         ViewBag.Video = "";
-                        ViewBag.IsActive = false;
+                        ViewBag.IsActive = true;
                     }
                     return View();
                 }
                 else
-                    return View();
+                    return RedirectToAction("index", "admin");
             }
 
             [HttpPost]
@@ -98,7 +97,7 @@ namespace NailShop.Controllers
                     return View(model);
                 }
                 else
-                    return RedirectToAction("index", "backend");
+                    return RedirectToAction("index", "admin");
             }
 
             [HttpPost]
@@ -118,6 +117,135 @@ namespace NailShop.Controllers
             }
 
         #endregion
+
+        #region Slider
+            public ActionResult Slide()
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                    return View();
+                else
+                    return RedirectToAction("index", "admin");
+            }
+
+            public ActionResult CreateSlide(long id)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    ViewBag.ID = id;
+                    ViewBag.Image = "~/Uploads/Default/default.png";
+                    vw_Slide model = new vw_Slide();
+                    if (id != -1)
+                    {
+                        ISlide cls = new SlideBO();
+                        model = cls.GetData(id);
+                        if (model == null)
+                            model = new vw_Slide();
+                        else
+                            ViewBag.Image = model.Image;
+                    }
+                    return View(model);
+                }
+                else
+                    return RedirectToAction("index", "admin");
+            }
+        #endregion
+
+        #region Welcome
+            public ActionResult Welcome()
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    IWelcome _cls = new WelcomeBO();
+                    var model = _cls.GetWelcome(_session.LangID);
+                    return View(model);
+                }
+                else
+                    return RedirectToAction("index", "admin");
+            }
+
+        #endregion
+
+        #region Brand
+            public ActionResult Brand()
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                    return View();
+                else
+                    return RedirectToAction("index", "admin");
+            }
+
+            public ActionResult CreateBrand(long id)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    vw_Brand model = new vw_Brand();
+                    ViewBag.ID = id;
+                    if(id!=-1)
+                    {
+                        IBrand cls = new BrandBO();
+                        model = cls.GetData(_session.LangID, id);
+                    }
+                    return View(model);
+                }
+                else
+                    return RedirectToAction("index", "admin");
+            }
+        #endregion
+
+        #region News
+            public ActionResult News()
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                    return View();
+                else
+                    return RedirectToAction("index", "admin");
+            }
+
+            public ActionResult CreateNews(long id)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    vw_News model = new vw_News();
+                    ViewBag.ID = id;
+                    if (id != -1)
+                    {
+                        INews cls = new NewsBO();
+                        model = cls.GetData(_session.LangID, id);
+                    }
+                    return View(model);
+                }
+                else
+                    return RedirectToAction("index", "admin");
+            }
+        #endregion
+
+        #region Product Hot
+            public ActionResult ProductHot()
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                    return View();
+                else
+                    return RedirectToAction("index", "admin");
+            }
+
+            public ActionResult CreateProductHot(int store, long id)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    vw_ProductHot model = new vw_ProductHot();
+                    ViewBag.ID = id;
+                    @ViewBag.StoreID = store;
+                    if (id != -1)
+                    {
+                        IProductHot cls = new ProductHotBO();
+                        model = cls.GetData(id);
+                    }
+                    return View(model);
+                }
+                else
+                    return RedirectToAction("index", "admin");
+            }
+            #endregion
 
         #region JsonResult
 
@@ -211,6 +339,7 @@ namespace NailShop.Controllers
                 }
             }
 
+            [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
             public JsonResult GetPhoto()
             {
                 string jsonData = "[]";
@@ -247,7 +376,6 @@ namespace NailShop.Controllers
                 return Json("[]", JsonRequestBehavior.AllowGet);
             }
 
-
             [HttpPost]
             public JsonResult DeletePhoto(long id)
             {
@@ -260,10 +388,11 @@ namespace NailShop.Controllers
                     return Json(jsonData, JsonRequestBehavior.AllowGet);
                 }
                 else
-                    RedirectToAction("index", "backend");
+                    RedirectToAction("index", "admin");
                 return Json("[]", JsonRequestBehavior.AllowGet);
             }
 
+            [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
             public JsonResult GetVideo()
             {
                 if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
@@ -271,7 +400,8 @@ namespace NailShop.Controllers
                     string jsonData = "[]";
                     IPhoto _cls = new PhotoBO();
                     var data = _cls.GetData(_session.LangID, false);
-                    jsonData = new JavaScriptSerializer().Serialize(data);
+                    if (data != null)
+                        jsonData = new JavaScriptSerializer().Serialize(data);
                     return Json(jsonData, JsonRequestBehavior.AllowGet);
                 }
                 else
@@ -388,6 +518,200 @@ namespace NailShop.Controllers
 
                 // Return relative file path
                 return relativeFileAndPath + "/" + fileNameFull;
+            }
+
+            [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+            public JsonResult GetSlider()
+            {
+                string jsonData = "[]";
+                ISlide _cls = new SlideBO();
+                var data = _cls.GetSlide(_session.LangID, "SLIDE_TOP");
+                if (data != null)
+                    jsonData = new JavaScriptSerializer().Serialize(data);
+                return Json(jsonData, JsonRequestBehavior.AllowGet);
+            }
+
+            [HttpPost]
+            public JsonResult DeleteSlide(long id)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    ISlide _cls = new SlideBO();
+                    var IsResult = _cls.Delete(id);
+                    return Json(new { IsOk = IsResult}, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    RedirectToAction("index", "admin");
+                return Json(new { IsOk = false}, JsonRequestBehavior.AllowGet);
+            }
+
+            [HttpPost]
+            public JsonResult SaveSlide(Slide slide, SlideLang slideLang)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    slide.SiteID = _session.SiteID;
+                    slideLang.LangID = _session.LangID;
+                    ISlide _cls = new SlideBO();
+                    var IsResult = _cls.SaveSlide(slide, slideLang);
+                    return Json(new { IsOk = IsResult }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    RedirectToAction("index", "admin");
+                return Json("[]", JsonRequestBehavior.AllowGet);
+            }
+
+            public JsonResult SaveWelcome(Slide slide, SlideLang slideLang)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    slide.SiteID = _session.SiteID;
+                    slide.Type = "WELCOME";
+                    slide.IsActive = true;
+                    slideLang.LangID = _session.LangID;
+                    slideLang.Name = "Welcome";
+
+                    IWelcome _cls = new WelcomeBO();
+                    var IsResult = _cls.SaveWelcome(slide, slideLang);
+                    return Json(new { IsOk = IsResult }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    RedirectToAction("index", "admin");
+                return Json("[]", JsonRequestBehavior.AllowGet);
+            }
+
+            [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+            public JsonResult GetBrand()
+            {
+                string jsonData = "[]";
+                IBrand _cls = new BrandBO();
+                var data = _cls.GetData(_session.LangID);
+                if (data != null)
+                    jsonData = new JavaScriptSerializer().Serialize(data);
+                return Json(jsonData, JsonRequestBehavior.AllowGet);
+            }
+
+            [HttpPost]
+            public JsonResult SaveBrand(Brand brand, BrandLang brandLang)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    brand.SiteID = _session.SiteID;
+                    brandLang.LangID = _session.LangID;
+                    IBrand _cls = new BrandBO();
+                    var IsResult = _cls.Save(brand, brandLang);
+                    return Json(new { IsOk = IsResult }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    RedirectToAction("index", "admin");
+                return Json("[]", JsonRequestBehavior.AllowGet);
+            }
+
+            [HttpPost]
+            public JsonResult DeleteBrand(long id)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    IBrand _cls = new BrandBO();
+                    var IsResult = _cls.Delete(id);
+                    return Json(new { IsOk = IsResult }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    RedirectToAction("index", "admin");
+                return Json(new { IsOk = false }, JsonRequestBehavior.AllowGet);
+            }
+
+            [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+            public JsonResult GetProductHot(int StoreID)
+            {
+                string jsonData = "[]";
+                IProductHot _cls = new ProductHotBO();
+                var data = _cls.GetData(StoreID);
+                if (data != null)
+                    jsonData = new JavaScriptSerializer().Serialize(data);
+                return Json(jsonData, JsonRequestBehavior.AllowGet);
+            }
+
+            [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+            public JsonResult GetStore()
+            {
+                string jsonData = "[]";
+                IStore _cls = new StoreBO();
+                var data = _cls.GetStores();
+                if (data == null)
+                    data = new List<Store>();
+                jsonData = new JavaScriptSerializer().Serialize(data);
+                return Json(jsonData, JsonRequestBehavior.AllowGet);
+            }
+
+            [HttpPost]
+            public JsonResult DeleteProductHot(long id)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    IProductHot _cls = new ProductHotBO();
+                    var IsResult = _cls.Delete(id);
+                    return Json(new { IsOk = IsResult }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    RedirectToAction("index", "admin");
+                return Json(new { IsOk = false }, JsonRequestBehavior.AllowGet);
+            }
+
+            [HttpPost]
+            public JsonResult SaveProductHot(ProductHot product)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    product.SiteID = _session.SiteID;
+                    IProductHot _cls = new ProductHotBO();
+                    var IsResult = _cls.Save(product);
+                    return Json(new { IsOk = IsResult }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    RedirectToAction("index", "admin");
+                return Json("[]", JsonRequestBehavior.AllowGet);
+            }
+
+            [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+            public JsonResult GetNews()
+            {
+                string jsonData = "[]";
+                INews _cls = new NewsBO();
+                var data = _cls.GetData(_session.LangID);
+                if (data != null)
+                    jsonData = new JavaScriptSerializer().Serialize(data);
+                return Json(jsonData, JsonRequestBehavior.AllowGet);
+            }
+
+            [HttpPost]
+            public JsonResult SaveNews(News news, NewsLang newsLang)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    news.SiteID = _session.SiteID;
+                    newsLang.LangID = _session.LangID;
+                    INews _cls = new NewsBO();
+                    var IsResult = _cls.Save(news, newsLang);
+                    return Json(new { IsOk = IsResult }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    RedirectToAction("index", "admin");
+                return Json("[]", JsonRequestBehavior.AllowGet);
+            }
+
+            [HttpPost]
+            public JsonResult DeleteNews(long id)
+            {
+                if (_session.IsLogin && _session.IsStore && _session.IsAdmin)
+                {
+                    INews _cls = new NewsBO();
+                    var IsResult = _cls.Delete(id);
+                    return Json(new { IsOk = IsResult }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                    RedirectToAction("index", "admin");
+                return Json(new { IsOk = false }, JsonRequestBehavior.AllowGet);
             }
 
         #endregion

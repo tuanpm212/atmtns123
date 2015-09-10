@@ -1,235 +1,284 @@
 ﻿@using NailShop.DataAccess;
 @model NailShop.Business.Model.ModelWeb.Home
 @{
-    ViewBag.Title = @Resources.FormTitle.formHome;
+    ViewBag.Title = @Resources.TitlePage.Home;
     Layout = "~/Views/Share/_Layout.cshtml";
 }
-<!-- Custom styles for Nail -->
-<link href="~/Contents/css/layerslider.css" rel="stylesheet" />
-<link href="~/Contents/css/owl.carousel.css" rel="stylesheet" />
-<link href="~/Contents/css/nail-home.css" rel="stylesheet" />
-<link href="~/Contents/css/magnific-popup.css" rel="stylesheet" />
 
-
-@using (Html.BeginForm("Index", "Home", FormMethod.Get, new { id = "home" }))
-{
-    <div class="page-wrap">
-        <section>
-            <div id="layerSlider" style="width: 100%; height: 400px;">
-                @{
-                    foreach (vw_Slide row in Model.Sliders)
-                    {
-                        <div class="ls-slide">
-                            <img src="@row.Image" class="ls-bg" alt="Slide background">
-                        </div>
-                    }
-                }
-            </div>
-        </section>
-
-        <section class="section-wellcome">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <img src="@Model.Welcome.Image">
-                    </div>
-                    <div class="col-sm-7">
-                        <h1><em>@Model.Welcome.Name</em></h1>
-                        <p class="text-justify"><em>@Html.Raw(Model.Welcome.Description)</em></p>
-                    </div>
-                    <i class="fa fa-quote-left"></i>
-                    <i class="fa fa-quote-right"></i>
-                </div>
-            </div>
-        </section>
-
-@{
-    int k=1;
-    foreach (Store row in Model.Stores)
-    {
-        <section class="section-product product-style-@k">
-            <div class="container">
-                <div class="row">
-                    <h3 class="text-center section-title"><em>@row.StoreName</em></h3>
-                    <div class="col-sm-12 carouselProduct">
-                        @{
-                            foreach (vw_ProductHot mRow in Model.ProductHots)
-                            {
-                                if (mRow.StoreID == row.StoreID)
-                                {
-                                    <div class="item">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <img class="embed-responsive-item" src="@mRow.Thumbnail">
-                                            <div class="embed-responsive-item hover-image" data-name="@mRow.ProductName" data-image="@mRow.LargeImage" data-description="@mRow.Description" data-price="$@mRow.Price.ToString("#,##0.00")" data-url="@mRow.Url">
-                                                <i class="fa fa-search-plus"></i>
-                                                <p>@Resources.Home.btnReadmore</p>
-                                            </div>
-                                        </div>
-                                        <h4>@mRow.ProductName</h4>
-                                        <span>Giá: $@mRow.Price.ToString("#,##0.00")</span>
-                                        <small><em>@NailShop.Utils.Utils.SplitWords(mRow.ShortDescription, 80)</em></small>
-                                        <div class="text-center">
-                                            <a target="_blank" href="@mRow.Url" class="btn-primary btn-sm">@Resources.Home.btnReadmore</a>
-                                        </div>
-                                    </div>
-                                }
-                            }
-                        }
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        k++;
-        if (k > 3)
-        {
-            k = 1;
-        }
-    }
-   
- }
-
-        <section>
-            <div id="owlCarousel">
-                @{
-    foreach (vw_Brand row in Model.Brands)
-    {
-        <div class="item">
-            <img src="@row.Image">
-        </div>
-    }
-                }
-            </div>
-        </section>
-
-        <section class="section-news" data-parallax="scroll" data-image-src="Contents/images/bg-news.jpg">
-            <div class="container">
-                <div class="row">
-                    <h3 class="text-center text-uppercase section-title"><em>@Resources.Home.titleNew</em></h3>
+<section class="section-slide">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
                     @{
-                        int i = 0;
-                        foreach (vw_News row in Model.News)
+                        var i = 0;
+                        foreach (vw_Slide row in Model.Sliders)
                         {
                             if (i == 0)
                             {
-                                <div class="col-sm-6">
-                                    <div class="item-left">
-                                        <img src="@row.Image">
-                                        <div class="col-xs-10 item-panel">
-                                            <h4 class="text-uppercase"><em>@row.Title</em></h4>
-                                            <p>@row.ShortDescription</p>
-                                            @*<a href="#" class="btn btn-primary">Xem chi tiết</a>*@
-                                        </div>
-                                    </div>
-                                </div>
-                                i++;
+                                <li data-target="#carousel-example-generic" data-slide-to="@i" class="active"></li>
                             }
                             else
                             {
-                                <div class="col-sm-6">
-                                    <div class="item-right">
-                                        <img src="@row.Image">
-                                        <div class="col-xs-10 item-panel">
-                                            <h4 class="text-uppercase"><em>@row.Title</em></h4>
-                                            <p>@row.ShortDescription</p>
-                                            @*<a href="#" class="btn btn-primary">Xem chi tiết</a>*@
-                                        </div>
-                                    </div>
-                                </div>
-                                i++;
+                                <li data-target="#carousel-example-generic" data-slide-to="@i"></li>
                             }
                         }
                     }
+                </ol>
+
+                <div class="carousel-inner" role="listbox">
+                    @{
+                        var isFirst = true;
+                        foreach (vw_Slide row in Model.Sliders)
+                        {
+                            if (isFirst == true)
+                            {
+                                <div class="item active">
+                                    <img src="@row.Image" alt="@row.Name">
+                                </div>
+                                isFirst = false;
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <img src="@row.Image" alt="@row.Name">
+                                </div>
+                            };
+                        };
+                    }
                 </div>
+
+                <a class="left slide-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right slide-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-        </section>
-
+        </div>
     </div>
+</section>
 
-}
-<div id="itemDetail" class="item-detail">
-    <div class="embed-responsive embed-responsive-16by9"></div>
-    <h3></h3>
-    <span></span>
-    <p class="text-justify"></p>
-    <p class="text-center"></p>
-</div>
-@section Scripts {
-    <script src="~/Scripts/greensock.js"></script>
-    <script src="~/Scripts/layerslider.transitions.js"></script>
-    <script src="~/Scripts/layerslider.kreaturamedia.jquery.js"></script>
-    <script src="~/Scripts/owl.carousel.js"></script>
-    <script src="~/Scripts/parallax.js"></script>
-    <script src="~/Scripts/jquery.magnific-popup.js"></script>
-    <script type="text/javascript">
+<section class="section-news">
+    <div class="row">
+        <div class="col-sm-8 clearfix wellcome-block">
+            <h1 class="text-center"><strong>GIỚI THIỆU</strong></h1>
+            <div class="text-justify description">
+                <p>Là công ty hàng đầu về chuyên cung ứng các loại dầu D.O,FO & SINH HỌC, là tổng đại lý phân phối lớn cho các hãng công ty dầu tại Việt Nam như công ty Sài Gòn Petro, công ty Petrolimex, công ty Pêtc và dầu  của chúng tôi cung ứng đều đảm bảo chất lượng với giấy chứng nhận kiểm định chấy lượng cao do TCVN cấp.</p>
+                <ul>
+                    <li><i class="fa fa-chevron-right"></i> Dầu nhờn động cơ xăng, diesel và FO.</li>
+                    <li><i class="fa fa-chevron-right"></i> Dầu nhờn thủy lực, dầu cầu, hộp số, bánh răng.</li>
+                    <li><i class="fa fa-chevron-right"></i> Dầu máy nén khí, máy nén lạnh.</li>
+                    <li><i class="fa fa-chevron-right"></i> Dầu truyền nhiệt.</li>
+                    <li><i class="fa fa-chevron-right"></i> Dầu cắt gọt kim loại.</li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn-default pull-right">Xem chi tiết</a>
+        </div>
+        <div class="col-sm-4 clearfix news-list">
+            <div class="item clearfix">
+                <span class="top top-1">1</span>
+                <h4 class="text-uppercase"><a href="#">Dầu DO</a></h4>
+                <p>Cung cấp dầu Diesel cho tất cả các doanh nghiệp, nhà thầu, những công trình lớn.</p>
+            </div>
+            <div class="item clearfix">
+                <span class="top top-2">2</span>
+                <h4 class="text-uppercase"><a href="#">Dầu FO</a></h4>
+                <p>Doanh nghiệp cung cấp dầu FO cho các lò hơi, kho nóng, những nhà máy bia Sài Gòn.</p>
+            </div>
+            <div class="item clearfix">
+                <span class="top top-3">3</span>
+                <h4 class="text-uppercase"><a href="#">DẦU SINH HỌC</a></h4>
+                <p>Dầu sinh học được chiết suất từ thực vật dầu đều, dầu ô liêu.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    $(document).ready(function () {
-        $('#layerSlider').layerSlider({
-            responsiveUnder: 960,
-            layersContainer: 960,
-            skinsPath: 'Contents/skins/'
-        });
+<section class="section-service clearfix">
+    <div class="col-xs-12 z-depth-3 service-content">
+        <h3 class="text-uppercase">cung cấp những dịch vụ</h3>
+        <hr>
+        <div class="col-sm-4">
+            <ul class="list-unstyled">
+                <li><i class="fa fa-chevron-right"></i> Dầu DO</li>
+                <li><i class="fa fa-chevron-right"></i> Dầu FO</li>
+                <li><i class="fa fa-chevron-right"></i> Dầu sinh học</li>
+                <li><i class="fa fa-chevron-right"></i> Dầu nhờn thủy lực</li>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <ul class="list-unstyled">
+                <li><i class="fa fa-chevron-right"></i> Dầu DO</li>
+                <li><i class="fa fa-chevron-right"></i> Dầu FO</li>
+                <li><i class="fa fa-chevron-right"></i> Dầu sinh học</li>
+                <li><i class="fa fa-chevron-right"></i> Dầu nhờn thủy lực</li>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <ul class="list-unstyled">
+                <li><i class="fa fa-chevron-right"></i> Dầu DO</li>
+                <li><i class="fa fa-chevron-right"></i> Dầu FO</li>
+                <li><i class="fa fa-chevron-right"></i> Dầu sinh học</li>
+                <li><i class="fa fa-chevron-right"></i> Dầu nhờn thủy lực</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
-        $('#owlCarousel').owlCarousel({
-            margin: 10,
-            loop: true,
-            autoWidth: true,
-            items: 4
-        });
+@*
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { id = "home" }))
+    {
+        <div class="page-wrap">
+            <section>
+                <div id="layerSlider" style="width: 100%; height: 400px;">
+                    @{
+        foreach (vw_Slide row in Model.Sliders)
+        {
+            <div class="ls-slide">
+                <img src="@row.Image" class="ls-bg" alt="Slide background">
+            </div>
+        }
+                    }
+                </div>
+            </section>
 
-        $('.carouselProduct').on('initialized.owl.carousel', function (event) {
-            var tmp = 0, $item = $(this).find('.owl-item');
-            $item.height('auto');
-            $item.each(function () {
-                if ($(this).height() > tmp) {
-                    tmp = $(this).height();
-                };
-            });
-            $item.height(tmp);
-        });
+            <section class="section-wellcome">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <img src="@Model.Welcome.Image">
+                        </div>
+                        <div class="col-sm-7">
+                            <h1><em>@Model.Welcome.Name</em></h1>
+                            <p class="text-justify"><em>@Html.Raw(Model.Welcome.Description)</em></p>
+                        </div>
+                        <i class="fa fa-quote-left"></i>
+                        <i class="fa fa-quote-right"></i>
+                    </div>
+                </div>
+            </section>
 
-        $('.carouselProduct').owlCarousel({
-            themeClass: "nail-carousel",
-            navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
-            margin: 30,
-            items: 4,
-            responsive: {
-                0: {
-                    items: 1,
-                    dots: true,
-                },
-                768: {
-                    items: 2,
-                },
-                992: {
-                    items: 3,
-                    nav: true,
-                },
-                1200: {
-                    items: 4,
-                    nav: true,
+            @{
+        int k = 1;
+        foreach (Store row in Model.Stores)
+        {
+            <section class="section-product product-style-@k">
+                <div class="container">
+                    <div class="row">
+                        <h3 class="text-center section-title"><em>@row.StoreName</em></h3>
+                        <div class="col-sm-12 carouselProduct">
+                            @{
+            foreach (vw_ProductHot mRow in Model.ProductHots)
+            {
+                if (mRow.StoreID == row.StoreID)
+                {
+                    <div class="item">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <img class="embed-responsive-item" src="@mRow.Thumbnail">
+                            <div class="embed-responsive-item hover-image" data-name="@mRow.ProductName" data-image="@mRow.LargeImage" data-description="@mRow.Description" data-price="$@mRow.Price.ToString("#,##0.00")" data-url="@mRow.Url">
+                                <i class="fa fa-search-plus"></i>
+                                <p>@Resources.Home.btnReadmore</p>
+                            </div>
+                        </div>
+                        <h4>@mRow.ProductName</h4>
+                        <span>Giá: $@mRow.Price.ToString("#,##0.00")</span>
+                        <small><em>@NailShop.Utils.Utils.SplitWords(mRow.ShortDescription, 80)</em></small>
+                        <div class="text-center">
+                            <a target="_blank" href="@mRow.Url" class="btn-primary btn-sm">@Resources.Home.btnReadmore</a>
+                        </div>
+                    </div>
                 }
             }
-        });
+                            }
+                        </div>
 
-        $('.hover-image').on('click', function () {
-            var $itemDetail = $('#itemDetail'), $this = $(this), Name = $this.attr('data-name'), Image = $this.attr('data-image'), Description = $this.attr('data-description'), Price = $this.attr('data-price'), url = $this.attr('data-url');
-            $.magnificPopup.open({
-                items: {
-                    src: '#itemDetail',
-                },
-                type: 'inline',
-                callbacks: {
-                    beforeOpen: function () {
-                        $itemDetail.find('h3').html(Name);
-                        $itemDetail.find('.embed-responsive').html('<img class="embed-responsive-item" src="' + Image + '">');
-                        $itemDetail.find('span').html('@Html.Raw(Resources.Home.lblPrice)' + Price);
-                        $itemDetail.find('.text-center').html('<a target="_blank" class="btn-primary btn-sm" href="' + url + '">' + '@Html.Raw(Resources.Home.btnReadmore)' + ' </a>');
-                        $itemDetail.find('.text-justify').html(Description);
-                        },
-                    },
-                });
-            });
+                    </div>
+                </div>
+            </section>
+            k++;
+            if (k > 3)
+            {
+                k = 1;
+            }
+        }
+
+            }
+
+            <section>
+                <div id="owlCarousel">
+                    @{
+        foreach (vw_Brand row in Model.Brands)
+        {
+            <div class="item">
+                <img src="@row.Image">
+            </div>
+        }
+                    }
+                </div>
+            </section>
+
+            <section class="section-news" data-parallax="scroll" data-image-src="Contents/images/bg-news.jpg">
+                <div class="container">
+                    <div class="row">
+                        <h3 class="text-center text-uppercase section-title"><em>@Resources.Home.titleNew</em></h3>
+                        @{
+        int i = 0;
+        foreach (vw_News row in Model.News)
+        {
+            if (i == 0)
+            {
+                <div class="col-sm-6">
+                    <div class="item-left">
+                        <img src="@row.Image">
+                        <div class="col-xs-10 item-panel">
+                            <h4 class="text-uppercase"><em>@row.Title</em></h4>
+                            <p>@row.ShortDescription</p>
+                        </div>
+                    </div>
+                </div>
+                i++;
+            }
+            else
+            {
+                <div class="col-sm-6">
+                    <div class="item-right">
+                        <img src="@row.Image">
+                        <div class="col-xs-10 item-panel">
+                            <h4 class="text-uppercase"><em>@row.Title</em></h4>
+                            <p>@row.ShortDescription</p>
+                        </div>
+                    </div>
+                </div>
+                i++;
+            }
+        }
+                        }
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    }
+    <div id="itemDetail" class="item-detail">
+        <div class="embed-responsive embed-responsive-16by9"></div>
+        <h3></h3>
+        <span></span>
+        <p class="text-justify"></p>
+        <p class="text-center"></p>
+    </div>
+
+*@
+
+@section Style {
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
         });
     </script>
 }
