@@ -89,12 +89,12 @@
       <div class="row header-bottom">
         <nav class="collapse navbar-collapse" id="navbar">
           <ul class="list-unstyled">
-            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
             <li><a href="#">Giới thiệu</a></li>
             <li><a href="#">Sản phẩm</a></li>
             <li><a href="#">Tin tức</a></li>
             <li><a href="#">Video</a></li>
-            <li><a href="#">Hình ảnh</a></li>
+            <li class="active"><a href="#">Hình ảnh</a></li>
             <li><a href="#">Liên hệ</a></li>
           </ul>
         </nav>
@@ -105,55 +105,55 @@
             <div class="image-panel">
                 <div class="image-box">
                     <div class="carousel-padding">
-                        <div id="eventCarousel">
+                        <div id="albumCarousel">
                             <div class="item-event active">
                                 <img src="temp/gallery-1.jpg">
-                                <p>Super-Team Vinh</p>
+                                <p>Album 2015</p>
+                            </div>
+                            <div class="item-event">
+                                <img src="temp/gallery-2.jpg">
+                                <p>Album 2014</p>
+                            </div>
+                            <div class="item-event">
+                                <img src="temp/gallery-3.jpg">
+                                <p>Album 2013</p>
+                            </div>
+                            <div class="item-event">
+                                <img src="temp/gallery-4.jpg">
+                                <p>Album 2012</p>
                             </div>
                             <div class="item-event">
                                 <img src="temp/gallery-1.jpg">
-                                <p>Super-Team Vinh</p>
+                                <p>Album 2011</p>
                             </div>
                             <div class="item-event">
-                                <img src="temp/gallery-1.jpg">
-                                <p>Super-Team Vinh</p>
-                            </div>
-                            <div class="item-event">
-                                <img src="temp/gallery-1.jpg">
-                                <p>Super-Team Vinh</p>
-                            </div>
-                            <div class="item-event">
-                                <img src="temp/gallery-1.jpg">
-                                <p>Super-Team Vinh</p>
-                            </div>
-                            <div class="item-event">
-                                <img src="temp/gallery-1.jpg">
-                                <p>Super-Team Vinh</p>
+                                <img src="temp/gallery-2.jpg">
+                                <p>Album 2010</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="image-box">
                     <div class="lightbox-content">
-                        <a href="temp/gallery-1.jpg" data-lightbox="lightbox" data-title="My caption">
-                            <img src="temp/gallery-1.jpg">
+                        <a href="temp/gallery-1-full.jpg" data-lightbox="lightbox" data-title="Giới thiệu hình ảnh 1">
+                            <img src="temp/gallery-1-full.jpg">
                             <div>
-                                <h5>Lễ công bố</h5>
+                                <h5>Giới thiệu hình ảnh 1</h5>
                             </div>
                         </a>
                     </div>
                     <div class="carousel-padding">
                         <div id="imageCarousel">
+                            <div class="item-image">
+                                <img src="temp/gallery-5.jpg">
+                            </div>
+                            <div class="item-image">
+                                <img src="temp/gallery-6.jpg">
+                            </div>
+                            <div class="item-image">
+                                <img src="temp/gallery-7.jpg">
+                            </div>
                             <div class="item-image active">
-                                <img src="temp/gallery-1.jpg">
-                            </div>
-                            <div class="item-image">
-                                <img src="temp/gallery-1.jpg">
-                            </div>
-                            <div class="item-image">
-                                <img src="temp/gallery-1.jpg">
-                            </div>
-                            <div class="item-image">
                                 <img src="temp/gallery-1.jpg">
                             </div>
                         </div>
@@ -198,8 +198,8 @@
     <script type="text/javascript" src="js/lightbox.js"></script>
     <script>
       $(document).ready(function(){
-            $('#eventCarousel').owlCarousel({
-                themeClass: "nail-carousel",
+            $('#albumCarousel').owlCarousel({
+                themeClass: "oil-carousel",
                 margin: 15,
                 responsive: {
                     0: {
@@ -222,7 +222,7 @@
             });
 
             $('#imageCarousel').owlCarousel({
-                themeClass: "nail-carousel",
+                themeClass: "oil-carousel",
                 margin: 15,
                 responsive: {
                     0: {

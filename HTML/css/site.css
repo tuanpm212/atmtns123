@@ -385,7 +385,7 @@ hr {
   }
 }
 .section-gallery .image-box .lightbox-content {
-  border: 3px solid #000;
+  border: 3px solid #dad2ae;
   margin-bottom: 15px;
   position: relative;
 }
@@ -403,7 +403,7 @@ hr {
   left: 0;
 }
 .section-gallery .image-box .lightbox-content div h5 {
-  color: #000;
+  color: #999288;
   font-size: 18px;
   font-weight: bold;
 }
@@ -422,10 +422,10 @@ hr {
   font-weight: bold;
 }
 .section-gallery .image-box .item-event.active img {
-  border-color: #000;
+  border-color: #dad2ae;
 }
 .section-gallery .image-box .item-event.active p {
-  color: #ff7108;
+  color: #dad2ae;
 }
 .section-gallery .image-box .item-image {
   cursor: pointer;
@@ -437,17 +437,17 @@ hr {
   margin: 0 auto 5px;
 }
 .section-gallery .image-box .item-image.active img {
-  border-color: #000;
+  border-color: #dad2ae;
 }
-.section-gallery .nail-carousel {
+.section-gallery .oil-carousel {
   position: relative;
 }
-.section-gallery .nail-carousel .owl-nav {
+.section-gallery .oil-carousel .owl-nav {
   width: 100%;
   position: absolute;
   top: 50%;
 }
-.section-gallery .nail-carousel .owl-nav > div {
+.section-gallery .oil-carousel .owl-nav > div {
   width: 30px;
   height: 30px;
   color: #ffffff;
@@ -460,20 +460,20 @@ hr {
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
-.section-gallery .nail-carousel .owl-nav .owl-prev {
+.section-gallery .oil-carousel .owl-nav .owl-prev {
   left: -35px;
 }
-.section-gallery .nail-carousel .owl-nav .owl-next {
+.section-gallery .oil-carousel .owl-nav .owl-next {
   right: -35px;
 }
-.section-gallery .nail-carousel .owl-dots {
+.section-gallery .oil-carousel .owl-dots {
   text-align: center;
 }
-.section-gallery .nail-carousel .owl-dot {
+.section-gallery .oil-carousel .owl-dot {
   display: inline-block;
   padding: 0 3px;
 }
-.section-gallery .nail-carousel .owl-dot span {
+.section-gallery .oil-carousel .owl-dot span {
   width: 12px;
   height: 12px;
   display: inline-block;
@@ -482,6 +482,6 @@ hr {
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
-.section-gallery .nail-carousel .owl-dot.active span {
-  background-color: #0f8e5d;
+.section-gallery .oil-carousel .owl-dot.active span {
+  background-color: #999288;
 }
