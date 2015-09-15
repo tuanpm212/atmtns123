@@ -74,6 +74,74 @@
 }
 
 //
+// Input style
+// --------------------------------------------------
+
+.input-group-oil-style {
+	.input-oil-style {
+		display: none;
+
+		&[type="radio"] {
+			& + .label-oil-style {
+				&:before {
+					display: block;
+					border: 2px solid #8d8b6b;
+					position: absolute;
+					.square(12px);
+					content: " ";
+					border-radius: 6px;
+					left: 0;
+					top: 4px;
+				}
+			}
+		}
+
+		&[type="radio"] {
+			&:checked + .label-oil-style {
+				&:before {
+					background-color: #8d8b6b;
+				}
+			}
+		}
+	}
+
+	.label-oil-style {
+		cursor: pointer;
+		padding-left: 17px;
+		position: relative;
+	}
+}
+
+//
+// Pagination
+// --------------------------------------------------
+
+.pagination {
+	> li {
+		> a {
+			padding: 6px;
+			border: 0;
+			background: none;
+			color: #8d8b6b;
+
+			&:hover {
+				background: none;
+				color: #d9524e;
+			}
+
+			
+		}
+
+		&.active {
+			> a {
+				background: none;
+				color: #d9524e;
+			}
+		}
+	}
+}
+
+//
 // Z-depth
 // --------------------------------------------------
 
@@ -262,6 +330,8 @@ hr {
 
 	.footer-bottom {
 		background-color: @footer-bottom-bg;
+		float: left;
+		width: 100%;
 
 		p {
 			margin-top: 10px;
@@ -432,7 +502,6 @@ hr {
 	}
 
 	.contact-form {
-
 		textarea {
 			height: 113px;
 			resize: none;
@@ -521,7 +590,7 @@ hr {
 				left: 0;
 
 				h5 {
-					color: #999288;
+					color: #d9524e;
 					font-size: 18px;
 					font-weight: bold;
 				}
@@ -546,11 +615,11 @@ hr {
 
 			&.active {
 				img {
-					border-color: #dad2ae;
+					border-color: #d9524e;
 				}
 
 				p {
-					color: #dad2ae;
+					color: #d9524e;
 				}
 			}
 		}
@@ -567,7 +636,7 @@ hr {
 
 			&.active {
 				img {
-					border-color: #dad2ae;
+					border-color: #d9524e;
 				}
 			}
 		}
@@ -622,8 +691,29 @@ hr {
 			}
 
 			&.active span {
-				background-color: #999288;
+				background-color: #d9524e;
 			}
+		}
+	}
+}
+
+.section-product {
+	.item {
+		background-color: #f8f8f1;
+		padding: 15px;
+
+		img {
+			width: 100%;
+			border: 1px solid #ecece6;
+		}
+
+		h5 {
+			color: #8d8b6b;
+			font-size: 18px;
+		}
+
+		p {
+			color: #d9524e;
 		}
 	}
 }

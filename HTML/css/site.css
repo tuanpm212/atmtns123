@@ -59,6 +59,42 @@ fieldset[disabled] .btn-default.active {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.input-group-oil-style .input-oil-style {
+  display: none;
+}
+.input-group-oil-style .input-oil-style[type="radio"] + .label-oil-style:before {
+  display: block;
+  border: 2px solid #8d8b6b;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  content: " ";
+  border-radius: 6px;
+  left: 0;
+  top: 4px;
+}
+.input-group-oil-style .input-oil-style[type="radio"]:checked + .label-oil-style:before {
+  background-color: #8d8b6b;
+}
+.input-group-oil-style .label-oil-style {
+  cursor: pointer;
+  padding-left: 17px;
+  position: relative;
+}
+.pagination > li > a {
+  padding: 6px;
+  border: 0;
+  background: none;
+  color: #8d8b6b;
+}
+.pagination > li > a:hover {
+  background: none;
+  color: #d9524e;
+}
+.pagination > li.active > a {
+  background: none;
+  color: #d9524e;
+}
 .z-depth-1 {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -205,6 +241,8 @@ hr {
 }
 .oil-theme .footer-bottom {
   background-color: #acaa8e;
+  float: left;
+  width: 100%;
 }
 .oil-theme .footer-bottom p {
   margin-top: 10px;
@@ -403,7 +441,7 @@ hr {
   left: 0;
 }
 .section-gallery .image-box .lightbox-content div h5 {
-  color: #999288;
+  color: #d9524e;
   font-size: 18px;
   font-weight: bold;
 }
@@ -422,10 +460,10 @@ hr {
   font-weight: bold;
 }
 .section-gallery .image-box .item-event.active img {
-  border-color: #dad2ae;
+  border-color: #d9524e;
 }
 .section-gallery .image-box .item-event.active p {
-  color: #dad2ae;
+  color: #d9524e;
 }
 .section-gallery .image-box .item-image {
   cursor: pointer;
@@ -437,7 +475,7 @@ hr {
   margin: 0 auto 5px;
 }
 .section-gallery .image-box .item-image.active img {
-  border-color: #dad2ae;
+  border-color: #d9524e;
 }
 .section-gallery .oil-carousel {
   position: relative;
@@ -483,5 +521,20 @@ hr {
   border-radius: 50%;
 }
 .section-gallery .oil-carousel .owl-dot.active span {
-  background-color: #999288;
+  background-color: #d9524e;
+}
+.section-product .item {
+  background-color: #f8f8f1;
+  padding: 15px;
+}
+.section-product .item img {
+  width: 100%;
+  border: 1px solid #ecece6;
+}
+.section-product .item h5 {
+  color: #8d8b6b;
+  font-size: 18px;
+}
+.section-product .item p {
+  color: #d9524e;
 }
