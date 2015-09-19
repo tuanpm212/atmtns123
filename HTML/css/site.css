@@ -538,3 +538,17 @@ hr {
 .section-product .item p {
   color: #d9524e;
 }
+.section-banner .img-banner {
+  margin-top: 15px;
+}
+.section-intro .description ul {
+  list-style: none;
+}
+.section-intro .description ul > li {
+  padding-left: 1em;
+  text-indent: -0.7em;
+}
+.section-intro .description ul > li:before {
+  content: "• ";
+  color: red;
+}
