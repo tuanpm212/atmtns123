@@ -1,0 +1,26 @@
+﻿@model Website.Data.About
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Share/_LayoutPage.cshtml";
+}
+<link href="~/Contents/css/about.css" rel="stylesheet" />
+<div class="page-wrap">
+    <div class="title-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>GIỚI THIỆU</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 about-content">
+                    @Html.Raw(Model.Contents)
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
