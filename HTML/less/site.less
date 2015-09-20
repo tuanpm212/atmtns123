@@ -658,8 +658,6 @@ hr {
 	}
 
 	.oil-carousel {
-		position: relative;
-
 		.owl-nav {
 			width: 100%;
 			position: absolute;
@@ -713,12 +711,13 @@ hr {
 
 .section-product {
 	.item {
-		background-color: #f8f8f1;
+		display: block;
 		padding: 15px;
+		margin-bottom: 15px;
+		border: 1px solid #dad2ae;
 
 		img {
 			width: 100%;
-			border: 1px solid #ecece6;
 		}
 
 		h5 {
@@ -744,5 +743,22 @@ hr {
 		ul {
 			.list-dot-red();
 		}
+	}
+}
+
+.section-news {
+	.item {
+		display: block;
+		margin-bottom: 30px;
+		padding: 15px;
+		border: 1px solid #dad2ae;
+
+		> img {
+			width: 100%;
+		}
+	}
+
+	ul {
+		.list-dot-red();
 	}
 }

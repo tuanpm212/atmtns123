@@ -477,9 +477,6 @@ hr {
 .section-gallery .image-box .item-image.active img {
   border-color: #d9524e;
 }
-.section-gallery .oil-carousel {
-  position: relative;
-}
 .section-gallery .oil-carousel .owl-nav {
   width: 100%;
   position: absolute;
@@ -524,12 +521,13 @@ hr {
   background-color: #d9524e;
 }
 .section-product .item {
-  background-color: #f8f8f1;
+  display: block;
   padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #dad2ae;
 }
 .section-product .item img {
   width: 100%;
-  border: 1px solid #ecece6;
 }
 .section-product .item h5 {
   color: #8d8b6b;
@@ -549,6 +547,26 @@ hr {
   text-indent: -0.7em;
 }
 .section-intro .description ul > li:before {
+  content: "• ";
+  color: red;
+}
+.section-news .item {
+  display: block;
+  margin-bottom: 30px;
+  padding: 15px;
+  border: 1px solid #dad2ae;
+}
+.section-news .item > img {
+  width: 100%;
+}
+.section-news ul {
+  list-style: none;
+}
+.section-news ul > li {
+  padding-left: 1em;
+  text-indent: -0.7em;
+}
+.section-news ul > li:before {
   content: "• ";
   color: red;
 }
