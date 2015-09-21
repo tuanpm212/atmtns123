@@ -182,6 +182,13 @@
 	.box-shadow(@z-depth-5);
 }
 
+//
+// Multizoom
+// --------------------------------------------------
+.magnifyarea {
+	background-color: #fff;
+}
+
 body {
 	background-color: @body-bg;
 	color: @body-color;
@@ -219,6 +226,7 @@ hr {
 	.header-top {
 		position: relative;
 		background-color: #f8f8f1;
+		z-index: 10;
 
 		.list-inline {
 			margin-top: 10px;
@@ -403,7 +411,7 @@ hr {
 	}
 }
 
-.section-news {
+.section-wellcome {
 	padding-bottom: 15px;
 
 	.wellcome-block {
@@ -726,6 +734,44 @@ hr {
 		}
 
 		p {
+			color: @brand-red;
+		}
+	}
+
+	.img-product {
+		> img {
+			border: 1px solid #dad2ae;
+			width: 100% !important;
+			height: auto !important;
+		}
+	}
+
+	.thumbs-product {
+		> a {
+			display: block;
+			float: left;
+			width: 25%;
+		}
+	}
+
+	.info-product {
+		h4 {
+			font-weight: bold;
+		}
+
+		dl {
+			margin-bottom: 10px;
+
+			> dt {
+				display: inline-block;
+			}
+
+			> dd {
+				display: inline-block;
+			}
+		}
+
+		.price-product {
 			color: @brand-red;
 		}
 	}

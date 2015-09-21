@@ -252,35 +252,7 @@
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
     <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 17,
-          scrollwheel: false,
-          streetViewControl: false,
-          disableDoubleClickZoom: true,
-          center: {lat: 10.7983161, lng: 106.7524634},
-        });
-
-        var marker = new google.maps.Marker({
-          map: map,
-          place: {
-            location: {lat: 10.7983161, lng: 106.7524634},
-            query: 'Số 1 Mai Chí Thọ'
-          },
-          attribution: {
-            source: 'Google Maps JavaScript API',
-            webUrl: 'https://developers.google.com/maps/'
-          }
-        });
-
-        var infoWindow = new google.maps.InfoWindow({
-          content: 'Căn hộ Lexington Residence'
-        });
-
-        marker.addListener('click', function() {
-          infoWindow.open(map, marker);
-        });
-      }
+      
     </script>
   </body>
 </html>

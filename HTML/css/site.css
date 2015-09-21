@@ -117,6 +117,9 @@ fieldset[disabled] .btn-default.active {
   -webkit-box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
   box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
 }
+.magnifyarea {
+  background-color: #fff;
+}
 body {
   background-color: #d9d8c9;
   color: #999288;
@@ -145,6 +148,7 @@ hr {
 .oil-theme .header-top {
   position: relative;
   background-color: #f8f8f1;
+  z-index: 10;
 }
 .oil-theme .header-top .list-inline {
   margin-top: 10px;
@@ -288,16 +292,16 @@ hr {
   height: 10px;
   margin: 1px;
 }
-.section-news {
+.section-wellcome {
   padding-bottom: 15px;
 }
-.section-news .wellcome-block .description ul {
+.section-wellcome .wellcome-block .description ul {
   list-style-type: none;
 }
-.section-news .news-list .item {
+.section-wellcome .news-list .item {
   border-bottom: 1px solid #f4f3ef;
 }
-.section-news .news-list .item .top {
+.section-wellcome .news-list .item .top {
   display: block;
   float: left;
   width: 50px;
@@ -311,16 +315,16 @@ hr {
   margin-bottom: 10px;
   margin-right: 10px;
 }
-.section-news .news-list .item .top-1 {
+.section-wellcome .news-list .item .top-1 {
   background-color: #dcd2a5;
 }
-.section-news .news-list .item .top-2 {
+.section-wellcome .news-list .item .top-2 {
   background-color: #c9c8b5;
 }
-.section-news .news-list .item .top-3 {
+.section-wellcome .news-list .item .top-3 {
   background-color: #e66864;
 }
-.section-news .news-list .item h4 {
+.section-wellcome .news-list .item h4 {
   margin-bottom: 0;
 }
 .section-service {
@@ -534,6 +538,31 @@ hr {
   font-size: 18px;
 }
 .section-product .item p {
+  color: #d9524e;
+}
+.section-product .img-product > img {
+  border: 1px solid #dad2ae;
+  width: 100% !important;
+  height: auto !important;
+}
+.section-product .thumbs-product > a {
+  display: block;
+  float: left;
+  width: 25%;
+}
+.section-product .info-product h4 {
+  font-weight: bold;
+}
+.section-product .info-product dl {
+  margin-bottom: 10px;
+}
+.section-product .info-product dl > dt {
+  display: inline-block;
+}
+.section-product .info-product dl > dd {
+  display: inline-block;
+}
+.section-product .info-product .price-product {
   color: #d9524e;
 }
 .section-banner .img-banner {
