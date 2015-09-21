@@ -540,10 +540,31 @@ hr {
 .section-product .item p {
   color: #d9524e;
 }
-.section-product .img-product > img {
+.section-product .img-product .img-small {
+  display: block;
   border: 1px solid #dad2ae;
   width: 100% !important;
   height: auto !important;
+}
+.section-product .img-product .img-small img {
+  width: 100%;
+}
+.section-product .img-product .img-thumb {
+  margin-top: 10px;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.section-product .img-product .img-thumb > a {
+  display: block;
+  float: left;
+  padding: 0 5px;
+  width: 25%;
+  margin-bottom: 10px;
+}
+.section-product .img-product .img-thumb > a > img {
+  display: block;
+  width: 100%;
+  border: 1px solid #dad2ae;
 }
 .section-product .thumbs-product > a {
   display: block;
