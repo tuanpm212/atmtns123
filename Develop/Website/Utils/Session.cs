@@ -18,7 +18,7 @@ namespace Website.Utils
             get
             {
                 if (HttpContext.Current.Session == null || HttpContext.Current.Session[Constant.IS_LOGIN] == null)
-                    return Convert.ToBoolean(GetValueByKeyWord(Constant.IS_LOGIN));
+                    return true; //Convert.ToBoolean(GetValueByKeyWord(Constant.IS_LOGIN));
                 else
                     return Convert.ToBoolean(HttpContext.Current.Session[Constant.IS_LOGIN].ToString());
             }

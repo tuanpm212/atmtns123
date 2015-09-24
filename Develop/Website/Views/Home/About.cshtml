@@ -4,23 +4,23 @@
     Layout = "~/Views/Share/_LayoutPage.cshtml";
 }
 <link href="~/Contents/css/about.css" rel="stylesheet" />
-<div class="page-wrap">
-    <div class="title-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h1>GIỚI THIỆU</h1>
-                </div>
+
+<section class="section-banner">
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="img-banner" src="~/Uploads/Sliders/slide-1.jpg" alt="intro picture">
+        </div>
+    </div>
+</section>
+
+<section class="section-intro">
+    <div class="row">
+        <div class="col-sm-12">
+            <hr>
+            <h1 class="text-center"><strong>GIỚI THIỆU</strong></h1>
+            <div class="text-justify description">
+                @Html.Raw(Model.Contents)
             </div>
         </div>
     </div>
-    <section class="section-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 about-content">
-                    @Html.Raw(Model.Contents)
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+</section>

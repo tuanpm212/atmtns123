@@ -1,0 +1,76 @@
+﻿@using Website.Data
+@model Contact
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Share/_LayoutPage.cshtml";
+}
+
+<section class="section-contact">
+    <h3>Liên hệ</h3>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 col-sm-push-6 clearfix" style="padding-top:25px">
+            <div id="map" class="google-map" style="height: 334px"></div>
+            <hr class="visible-xs-block">
+        </div>
+        <div class="col-sm-6 col-sm-pull-6 clearfix">
+            @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { id = "contact", @class = "contact-form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    <label>Họ và tên</label>
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control validation", @placeholder = "Nhập họ và tên" })
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control validation", @placeholder = "Nhập email" })
+                </div>
+                <div class="form-group">
+                    <label>Chủ đề</label>
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control validation", @placeholder = "Nhập chủ đề" })
+                </div>
+                <div class="form-group">
+                    <label>Nội dung</label>
+                    @Html.TextAreaFor(m => m.Content, new { @class = "form-control", @placeholder = "Nhập nội dung" })
+                </div>
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-default">Gửi</button>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 17,
+            scrollwheel: false,
+            streetViewControl: false,
+            disableDoubleClickZoom: true,
+            center: { lat: 10.7983161, lng: 106.7524634 },
+        });
+
+        var marker = new google.maps.Marker({
+            map: map,
+            place: {
+                location: { lat: 10.7983161, lng: 106.7524634 },
+                query: 'Số 1 Mai Chí Thọ'
+            },
+            attribution: {
+                source: 'Google Maps JavaScript API',
+                webUrl: 'https://developers.google.com/maps/'
+            }
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+            content: 'Căn hộ Lexington Residence'
+        });
+
+        marker.addListener('click', function () {
+            infoWindow.open(map, marker);
+        });
+    }
+</script>

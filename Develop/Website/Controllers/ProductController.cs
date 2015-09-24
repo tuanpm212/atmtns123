@@ -8,7 +8,7 @@ using Website.Data.BLL;
 
 namespace Website.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         //
         // GET: /Product/
@@ -17,6 +17,7 @@ namespace Website.Controllers
         {
             ProductBO cls = new ProductBO();
             var model = cls.GetData();
+            _session.IsLogin = false;
             return View(model);
         }
 

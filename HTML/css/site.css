@@ -394,11 +394,15 @@ hr {
   padding-right: 25px;
   overflow: hidden;
 }
-.section-video .video-thumnail img {
-  max-width: 100%;
+.section-video .video-thumnail li img {
+  border: 3px solid transparent;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+.section-video .video-thumnail li.active img {
+  border-color: #d9524e;
 }
 .section-video .video-thumnail .slimScrollDiv {
   overflow: visible !important;
@@ -588,6 +592,9 @@ hr {
 }
 .section-banner .img-banner {
   margin-top: 15px;
+}
+.section-intro .description {
+  margin-bottom: 30px;
 }
 .section-intro .description ul {
   list-style: none;

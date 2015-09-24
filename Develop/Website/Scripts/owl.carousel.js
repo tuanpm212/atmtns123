@@ -1861,7 +1861,8 @@
 
 					while (i++ < n) {
 						this.load(clones / 2 + this._core.relative(position));
-						clones && $.each(this._core.clones(this._core.relative(position++)), load);
+						clones && $.each(this._core.clones(this._core.relative(position)), load);
+						position++;
 					}
 				}
 			}, this)
@@ -1935,7 +1936,7 @@
 		for (property in Object.getOwnPropertyNames(this)) {
 			typeof this[property] != 'function' && (this[property] = null);
 		}
-	}
+	};
 
 	$.fn.owlCarousel.Constructor.Plugins.Lazy = Lazy;
 
@@ -2642,46 +2643,43 @@
 		 */
 		this._handlers = {
 			'prepared.owl.carousel': $.proxy(function(e) {
-				if (this._core.settings.dotsData) {
-					this._templates.push($(e.content).find('[data-dot]').andSelf('[data-dot]').attr('data-dot'));
+				if (e.namespace && this._core.settings.dotsData) {
+					this._templates.push('<div class="' + this._core.settings.dotClass + '">' +
+						$(e.content).find('[data-dot]').andSelf('[data-dot]').attr('data-dot') + '</div>');
 				}
 			}, this),
-			'add.owl.carousel': $.proxy(function(e) {
-				if (this._core.settings.dotsData) {
-					this._templates.splice(e.position, 0, $(e.content).find('[data-dot]').andSelf('[data-dot]').attr('data-dot'));
+			'added.owl.carousel': $.proxy(function(e) {
+				if (e.namespace && this._core.settings.dotsData) {
+					this._templates.splice(e.position, 0, this._templates.pop());
 				}
 			}, this),
-			'remove.owl.carousel prepared.owl.carousel': $.proxy(function(e) {
-				if (this._core.settings.dotsData) {
+			'remove.owl.carousel': $.proxy(function(e) {
+				if (e.namespace && this._core.settings.dotsData) {
 					this._templates.splice(e.position, 1);
 				}
 			}, this),
-			'change.owl.carousel': $.proxy(function(e) {
-				if (e.property.name == 'position') {
-					if (!this._core.state.revert && !this._core.settings.loop && this._core.settings.navRewind) {
-						var current = this._core.current(),
-							maximum = this._core.maximum(),
-							minimum = this._core.minimum();
-						e.data = e.property.value > maximum
-							? current >= maximum ? minimum : maximum
-							: e.property.value < minimum ? maximum : e.property.value;
-					}
-				}
-			}, this),
 			'changed.owl.carousel': $.proxy(function(e) {
-				if (e.property.name == 'position') {
+				if (e.namespace && e.property.name == 'position') {
 					this.draw();
 				}
 			}, this),
-			'refreshed.owl.carousel': $.proxy(function() {
-				if (!this._initialized) {
+			'initialized.owl.carousel': $.proxy(function(e) {
+				if (e.namespace && !this._initialized) {
+					this._core.trigger('initialize', null, 'navigation');
 					this.initialize();
+					this.update();
+					this.draw();
 					this._initialized = true;
+					this._core.trigger('initialized', null, 'navigation');
 				}
-				this._core.trigger('refresh', null, 'navigation');
-				this.update();
-				this.draw();
-				this._core.trigger('refreshed', null, 'navigation');
+			}, this),
+			'refreshed.owl.carousel': $.proxy(function(e) {
+				if (e.namespace && this._initialized) {
+					this._core.trigger('refresh', null, 'navigation');
+					this.update();
+					this.draw();
+					this._core.trigger('refreshed', null, 'navigation');
+				}
 			}, this)
 		};
 
@@ -2690,7 +2688,7 @@
 
 		// register event handlers
 		this.$element.on(this._handlers);
-	}
+	};
 
 	/**
 	 * Default options.
@@ -2699,7 +2697,6 @@
 	 */
 	Navigation.Defaults = {
 		nav: false,
-		navRewind: true,
 		navText: [ 'prev', 'next' ],
 		navSpeed: false,
 		navElement: 'div',
@@ -2711,77 +2708,63 @@
 		dotsClass: 'owl-dots',
 		dots: true,
 		dotsEach: false,
-		dotData: false,
+		dotsData: false,
 		dotsSpeed: false,
-		dotsContainer: false,
-		controlsClass: 'owl-controls'
-	}
+		dotsContainer: false
+	};
 
 	/**
 	 * Initializes the layout of the plugin and extends the carousel.
 	 * @protected
 	 */
 	Navigation.prototype.initialize = function() {
-		var $container, override,
-			options = this._core.settings;
+		var override,
+			settings = this._core.settings;
 
-		// create the indicator template
-		if (!options.dotsData) {
+		// create DOM structure for relative navigation
+		this._controls.$relative = (settings.navContainer ? $(settings.navContainer)
+			: $('<div>').addClass(settings.navContainerClass).appendTo(this.$element)).addClass('disabled');
+
+		this._controls.$previous = $('<' + settings.navElement + '>')
+			.addClass(settings.navClass[0])
+			.html(settings.navText[0])
+			.prependTo(this._controls.$relative)
+			.on('click', $.proxy(function(e) {
+				this.prev(settings.navSpeed);
+			}, this));
+		this._controls.$next = $('<' + settings.navElement + '>')
+			.addClass(settings.navClass[1])
+			.html(settings.navText[1])
+			.appendTo(this._controls.$relative)
+			.on('click', $.proxy(function(e) {
+				this.next(settings.navSpeed);
+			}, this));
+
+		// create DOM structure for absolute navigation
+		if (!settings.dotsData) {
 			this._templates = [ $('<div>')
-				.addClass(options.dotClass)
+				.addClass(settings.dotClass)
 				.append($('<span>'))
 				.prop('outerHTML') ];
 		}
 
-		// create controls container if needed
-		if (!options.navContainer || !options.dotsContainer) {
-			this._controls.$container = $('<div>')
-				.addClass(options.controlsClass)
-				.appendTo(this.$element);
-		}
+		this._controls.$absolute = (settings.dotsContainer ? $(settings.dotsContainer)
+			: $('<div>').addClass(settings.dotsClass).appendTo(this.$element)).addClass('disabled');
 
-		// create DOM structure for absolute navigation
-		this._controls.$indicators = options.dotsContainer ? $(options.dotsContainer)
-			: $('<div>').hide().addClass(options.dotsClass).appendTo(this._controls.$container);
-
-		this._controls.$indicators.on('click', 'div', $.proxy(function(e) {
-			var index = $(e.target).parent().is(this._controls.$indicators)
+		this._controls.$absolute.on('click', 'div', $.proxy(function(e) {
+			var index = $(e.target).parent().is(this._controls.$absolute)
 				? $(e.target).index() : $(e.target).parent().index();
 
 			e.preventDefault();
 
-			this.to(index, options.dotsSpeed);
+			this.to(index, settings.dotsSpeed);
 		}, this));
-
-		// create DOM structure for relative navigation
-		$container = options.navContainer ? $(options.navContainer)
-			: $('<div>').addClass(options.navContainerClass).prependTo(this._controls.$container);
-
-		this._controls.$next = $('<' + options.navElement + '>');
-		this._controls.$previous = this._controls.$next.clone();
-
-		this._controls.$previous
-			.addClass(options.navClass[0])
-			.html(options.navText[0])
-			.hide()
-			.prependTo($container)
-			.on('click', $.proxy(function(e) {
-				this.prev(options.navSpeed);
-			}, this));
-		this._controls.$next
-			.addClass(options.navClass[1])
-			.html(options.navText[1])
-			.hide()
-			.appendTo($container)
-			.on('click', $.proxy(function(e) {
-				this.next(options.navSpeed);
-			}, this));
 
 		// override public methods of the carousel
 		for (override in this._overrides) {
 			this._core[override] = $.proxy(this[override], this);
 		}
-	}
+	};
 
 	/**
 	 * Destroys the plugin.
@@ -2802,7 +2785,7 @@
 		for (property in Object.getOwnPropertyNames(this)) {
 			typeof this[property] != 'function' && (this[property] = null);
 		}
-	}
+	};
 
 	/**
 	 * Updates the internal state.
@@ -2810,72 +2793,72 @@
 	 */
 	Navigation.prototype.update = function() {
 		var i, j, k,
-			options = this._core.settings,
 			lower = this._core.clones().length / 2,
 			upper = lower + this._core.items().length,
-			size = options.center || options.autoWidth || options.dotData
-				? 1 : options.dotsEach || options.items;
+			maximum = this._core.maximum(true),
+			settings = this._core.settings,
+			size = settings.center || settings.autoWidth || settings.dotsData
+				? 1 : settings.dotsEach || settings.items;
 
-		if (options.slideBy !== 'page') {
-			options.slideBy = Math.min(options.slideBy, options.items);
+		if (settings.slideBy !== 'page') {
+			settings.slideBy = Math.min(settings.slideBy, settings.items);
 		}
 
-		if (options.dots || options.slideBy == 'page') {
+		if (settings.dots || settings.slideBy == 'page') {
 			this._pages = [];
 
 			for (i = lower, j = 0, k = 0; i < upper; i++) {
 				if (j >= size || j === 0) {
 					this._pages.push({
-						start: i - lower,
+						start: Math.min(maximum, i - lower),
 						end: i - lower + size - 1
 					});
+					if (Math.min(maximum, i - lower) === maximum) {
+						break;
+					}
 					j = 0, ++k;
 				}
 				j += this._core.mergers(this._core.relative(i));
 			}
 		}
-	}
+	};
 
 	/**
 	 * Draws the user interface.
-	 * @todo The option `dotData` wont work.
+	 * @todo The option `dotsData` wont work.
 	 * @protected
 	 */
 	Navigation.prototype.draw = function() {
-		var difference, i, html = '',
-			options = this._core.settings,
-			$items = this._core.$stage.children(),
-			index = this._core.relative(this._core.current());
+		var difference,
+			settings = this._core.settings,
+			disabled = this._core.items().length <= settings.items,
+			index = this._core.relative(this._core.current()),
+			loop = settings.loop || settings.rewind;
 
-		if (options.nav && !options.loop && !options.navRewind) {
-			this._controls.$previous.toggleClass('disabled', index <= 0);
-			this._controls.$next.toggleClass('disabled', index >= this._core.maximum());
+		this._controls.$relative.toggleClass('disabled', !settings.nav || disabled);
+
+		if (settings.nav) {
+			this._controls.$previous.toggleClass('disabled', !loop && index <= this._core.minimum(true));
+			this._controls.$next.toggleClass('disabled', !loop && index >= this._core.maximum(true));
 		}
 
-		this._controls.$previous.toggle(options.nav);
-		this._controls.$next.toggle(options.nav);
+		this._controls.$absolute.toggleClass('disabled', !settings.dots || disabled);
 
-		if (options.dots) {
-			difference = this._pages.length - this._controls.$indicators.children().length;
+		if (settings.dots) {
+			difference = this._pages.length - this._controls.$absolute.children().length;
 
-			if (options.dotData && difference !== 0) {
-				for (i = 0; i < this._controls.$indicators.children().length; i++) {
-					html += this._templates[this._core.relative(i)];
-				}
-				this._controls.$indicators.html(html);
+			if (settings.dotsData && difference !== 0) {
+				this._controls.$absolute.html(this._templates.join(''));
 			} else if (difference > 0) {
-				html = new Array(difference + 1).join(this._templates[0]);
-				this._controls.$indicators.append(html);
+				this._controls.$absolute.append(new Array(difference + 1).join(this._templates[0]));
 			} else if (difference < 0) {
-				this._controls.$indicators.children().slice(difference).remove();
+				this._controls.$absolute.children().slice(difference).remove();
 			}
 
-			this._controls.$indicators.find('.active').removeClass('active');
-			this._controls.$indicators.children().eq($.inArray(this.current(), this._pages)).addClass('active');
+			this._controls.$absolute.find('.active').removeClass('active');
+			this._controls.$absolute.children().eq($.inArray(this.current(), this._pages)).addClass('active');
 		}
-
-		this._controls.$indicators.toggle(options.dots);
-	}
+	};
 
 	/**
 	 * Extends event data.
@@ -2888,10 +2871,10 @@
 		event.page = {
 			index: $.inArray(this.current(), this._pages),
 			count: this._pages.length,
-			size: settings && (settings.center || settings.autoWidth || settings.dotData
+			size: settings && (settings.center || settings.autoWidth || settings.dotsData
 				? 1 : settings.dotsEach || settings.items)
 		};
-	}
+	};
 
 	/**
 	 * Gets the current page position of the carousel.
@@ -2899,11 +2882,11 @@
 	 * @returns {Number}
 	 */
 	Navigation.prototype.current = function() {
-		var index = this._core.relative(this._core.current());
-		return $.grep(this._pages, function(o) {
-			return o.start <= index && o.end >= index;
-		}).pop();
-	}
+		var current = this._core.relative(this._core.current());
+		return $.grep(this._pages, $.proxy(function(page, index) {
+			return page.start <= current && page.end >= current;
+		}, this)).pop();
+	};
 
 	/**
 	 * Gets the current succesor/predecessor position.
@@ -2912,9 +2895,9 @@
 	 */
 	Navigation.prototype.getPosition = function(successor) {
 		var position, length,
-			options = this._core.settings;
+			settings = this._core.settings;
 
-		if (options.slideBy == 'page') {
+		if (settings.slideBy == 'page') {
 			position = $.inArray(this.current(), this._pages);
 			length = this._pages.length;
 			successor ? ++position : --position;
@@ -2922,10 +2905,11 @@
 		} else {
 			position = this._core.relative(this._core.current());
 			length = this._core.items().length;
-			successor ? position += options.slideBy : position -= options.slideBy;
+			successor ? position += settings.slideBy : position -= settings.slideBy;
 		}
+
 		return position;
-	}
+	};
 
 	/**
 	 * Slides to the next item or page.
@@ -2934,7 +2918,7 @@
 	 */
 	Navigation.prototype.next = function(speed) {
 		$.proxy(this._overrides.to, this._core)(this.getPosition(true), speed);
-	}
+	};
 
 	/**
 	 * Slides to the previous item or page.
@@ -2943,7 +2927,7 @@
 	 */
 	Navigation.prototype.prev = function(speed) {
 		$.proxy(this._overrides.to, this._core)(this.getPosition(false), speed);
-	}
+	};
 
 	/**
 	 * Slides to the specified item or page.
@@ -2961,7 +2945,7 @@
 		} else {
 			$.proxy(this._overrides.to, this._core)(position, speed);
 		}
-	}
+	};
 
 	$.fn.owlCarousel.Constructor.Plugins.Navigation = Navigation;
 

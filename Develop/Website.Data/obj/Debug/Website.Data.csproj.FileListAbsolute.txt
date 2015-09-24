@@ -7,4 +7,3 @@ D:\MyData\Web\Website\Website.Data\bin\Debug\EntityFramework.xml
 D:\MyData\Web\Website\Website.Data\bin\Debug\EntityFramework.SqlServer.xml
 D:\MyData\Web\Website\Website.Data\obj\Debug\Website.Data.dll
 D:\MyData\Web\Website\Website.Data\obj\Debug\Website.Data.pdb
-D:\MyData\Web\Website\Website.Data\obj\Debug\Website.Data.csprojResolveAssemblyReference.cache

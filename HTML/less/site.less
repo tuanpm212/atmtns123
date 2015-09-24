@@ -550,11 +550,20 @@ hr {
 		padding-right: 25px;
 		overflow: hidden;
 
-		img {
-			max-width: 100%;
-			margin-left: auto;
-			margin-right: auto;
-			display: block;
+		li {
+			img {
+				border: 3px solid transparent;
+				width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+				display: block;
+			}
+
+			&.active {
+				img {
+					border-color: @brand-red;
+				}
+			}
 		}
 
 		.slimScrollDiv {
@@ -811,6 +820,7 @@ hr {
 
 .section-intro {
 	.description {
+		margin-bottom: 30px;
 		ul {
 			.list-dot-red();
 		}

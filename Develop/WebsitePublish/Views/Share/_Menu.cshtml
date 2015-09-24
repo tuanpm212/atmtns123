@@ -1,0 +1,166 @@
+﻿<section class="vbox">
+    <header class="header bg-primary lter text-center clearfix">
+        <div class="btn-group">
+            <span class="btn btn-sm btn-dark btn-icon"><i class="fa fa-bars"></i></span>
+            <div class="btn-group hidden-nav-xs">
+                <span class="btn btn-sm btn-primary">Menu</span>
+            </div>
+        </div>
+    </header>
+    <section class="w-f scrollable">
+        <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333">
+            <!-- nav -->
+            <nav class="nav-primary hidden-xs">
+                <ul class="nav">
+                    @{
+                        if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "VIDEO" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATEVIDEO")
+                        {
+                            <li class="active">
+                                <a href="/admin/video">
+                                    <i class="fa fa-video-camera icon">
+                                        <b class="bg-info dker"></b>
+                                    </i>
+                                    <span>Video</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/admin/video">
+                                    <i class="fa fa-video-camera icon">
+                                        <b class="bg-info dker"></b>
+                                    </i>
+                                    <span>Video</span>
+                                </a>
+                            </li>
+                        }
+
+                        if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "PHOTO" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATEPHOTO")
+                        {
+                            <li class="active">
+                                <a href="/admin/photo">
+                                    <i class="fa fa-photo icon">
+                                        <b class="bg-primary dker"></b>
+                                    </i>
+                                    <span>Hình ảnh</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/admin/photo">
+                                    <i class="fa fa-photo icon">
+                                        <b class="bg-primary dker"></b>
+                                    </i>
+                                    <span>Hình ảnh</span>
+                                </a>
+                            </li>
+                        }
+
+                        if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "ABOUT")
+                        {
+                            <li class="active">
+                                <a href="/admin/about">
+                                    <i class="fa fa-info-circle icon">
+                                        <b class="bg-danger"></b>
+                                    </i>
+                                    <span>Giới thiệu</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/admin/about">
+                                    <i class="fa fa-info-circle icon">
+                                        <b class="bg-danger"></b>
+                                    </i>
+                                    <span>Giới thiệu</span>
+                                </a>
+                            </li>
+                        }
+
+                        if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "SLIDE" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATESLIDE")
+                        {
+                            <li class="active">
+                                <a href="/admin/slide">
+                                    <i class="fa fa-play-circle icon">
+                                        <b class="bg-warning"></b>
+                                    </i>
+                                    <span>Slide Home</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/admin/slide">
+                                    <i class="fa fa-play-circle icon">
+                                        <b class="bg-warning"></b>
+                                    </i>
+                                    <span>Slide Home</span>
+                                </a>
+                            </li>
+                        }
+
+                        if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "PRODUCTHOT" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATEPRODUCTHOT")
+                        {
+                            <li class="active">
+                                <a href="/admin/product">
+                                    <i class="fa fa-shopping-cart icon">
+                                        <b class="bg-primary dker"></b>
+                                    </i>
+                                    <span>Sản phẩm</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/admin/product">
+                                    <i class="fa fa-shopping-cart icon">
+                                        <b class="bg-primary dker"></b>
+                                    </i>
+                                    <span>Sản phẩm</span>
+                                </a>
+                            </li>
+                        }
+
+                        if (ViewContext.RouteData.Values["action"].ToString().ToUpper() == "NEWS" || ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CREATENEWS")
+                        {
+                            <li class="active">
+                                <a href="/admin/news">
+                                    <i class="fa fa-newspaper-o icon">
+                                        <b class="bg-danger dker"></b>
+                                    </i>
+                                    <span>Tin tức</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/admin/news">
+                                    <i class="fa fa-newspaper-o icon">
+                                        <b class="bg-danger dker"></b>
+                                    </i>
+                                    <span>Tin tức</span>
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </nav>
+            <!-- / nav -->
+        </div>
+    </section>
+
+    <footer class="footer lt hidden-xs b-t b-dark">
+        <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-default btn-icon">
+            <i class="fa fa-angle-left text"></i>
+            <i class="fa fa-angle-right text-active"></i>
+        </a>
+    </footer>
+</section>

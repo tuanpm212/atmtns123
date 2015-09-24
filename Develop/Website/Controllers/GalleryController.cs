@@ -8,7 +8,7 @@ using Website.Data;
 
 namespace Website.Controllers
 {
-    public class GalleryController : Controller
+    public class GalleryController : BaseController
     {
         public ActionResult Index()
         {
@@ -17,6 +17,7 @@ namespace Website.Controllers
             data = _cls.GetAll();
             ViewBag.id = data[0].ID;
             ViewBag.Count = data.Count();
+            _session.IsLogin = false;
             return View(data);
         }
 

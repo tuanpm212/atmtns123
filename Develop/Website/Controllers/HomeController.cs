@@ -19,6 +19,7 @@ namespace Website.Controllers
                 HomeBO iHome = new HomeBO();
                 ModelHome model = new ModelHome();
                 model = iHome.GetDataForHome();
+                _session.IsLogin = false;
                 return View(model);
             }
 

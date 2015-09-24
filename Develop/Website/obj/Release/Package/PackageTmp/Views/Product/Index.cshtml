@@ -1,0 +1,77 @@
+﻿@using Website.Data;
+@model List<Website.Data.Product>
+@{
+    ViewBag.Title = "Sản phẩm";
+    Layout = "~/Views/Share/_LayoutPage.cshtml";
+}
+
+
+<section class="section-product">
+    <div class="row">
+        <div class="col-sm-3 col-sm-push-9 clearfix">
+            <h3>Sắp xếp</h3>
+            <hr>
+            <ul class="list-unstyled">
+                <li class="input-group-oil-style">
+                    <input id="asc" class="input-oil-style" type="radio" name="sort" checked>
+                    <label for="asc" class="label-oil-style">Giá tăng dần</label>
+                </li>
+                <li class="input-group-oil-style">
+                    <input id="dec" class="input-oil-style" type="radio" name="sort">
+                    <label for="dec" class="label-oil-style">Giá giảm dần</label>
+                </li>
+                <li class="input-group-oil-style">
+                    <input id="bestSale" class="input-oil-style" type="radio" name="sort">
+                    <label for="bestSale" class="label-oil-style">Sản phẩm bán chạy</label>
+                </li>
+                <li class="input-group-oil-style">
+                    <input id="newProduct" class="input-oil-style" type="radio" name="sort">
+                    <label for="newProduct" class="label-oil-style">Sản phẩm mới nhất</label>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-pull-3 clearfix">
+            <h3>Danh sách sản phẩm</h3>
+            <hr>
+            <div class="content-product">
+                @{
+                    for (int i = 0; i < Model.Count(); i+=3)
+                    {
+                        <div class="row">
+                            @if(i<Model.Count())
+                            { 
+                                <div class="col-sm-4">
+                                    <a href="#" class="item text-center">
+                                        <img src="@Model[i].ImageThumbnail">
+                                        <h5>@Model[i].Name</h5>
+                                        <p>Giá bán: @Model[i].Price VNĐ</p>
+                                    </a>
+                                </div>
+                            }
+                            @if (i + 1 < Model.Count())
+                            {
+                                <div class="col-sm-4">
+                                    <a href="#" class="item text-center">
+                                        <img src="@Model[i + 1].ImageThumbnail">
+                                        <h5>@Model[i + 1].Name</h5>
+                                        <p>Giá bán: @Model[i + 1].Price VNĐ</p>
+                                    </a>
+                                </div>
+                            }
+                            @if (i + 2 < Model.Count())
+                            {
+                                <div class="col-sm-4">
+                                    <a href="#" class="item text-center">
+                                        <img src="@Model[i + 2].ImageThumbnail">
+                                        <h5>@Model[i + 2].Name</h5>
+                                        <p>Giá bán: @Model[i + 2].Price VNĐ</p>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
