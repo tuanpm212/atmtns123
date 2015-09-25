@@ -1,0 +1,10 @@
+D:\MyData\Web\Website\Website.Data\bin\Release\Website.Data.dll.config
+D:\MyData\Web\Website\Website.Data\bin\Release\Website.Data.dll
+D:\MyData\Web\Website\Website.Data\bin\Release\Website.Data.pdb
+D:\MyData\Web\Website\Website.Data\bin\Release\EntityFramework.dll
+D:\MyData\Web\Website\Website.Data\bin\Release\EntityFramework.SqlServer.dll
+D:\MyData\Web\Website\Website.Data\bin\Release\EntityFramework.xml
+D:\MyData\Web\Website\Website.Data\bin\Release\EntityFramework.SqlServer.xml
+D:\MyData\Web\Website\Website.Data\obj\Release\Website.Data.csprojResolveAssemblyReference.cache
+D:\MyData\Web\Website\Website.Data\obj\Release\Website.Data.dll
+D:\MyData\Web\Website\Website.Data\obj\Release\Website.Data.pdb

@@ -1,0 +1,114 @@
+﻿@model Website.Data.Slide
+@{
+    ViewBag.Title = "CreateSlide";
+    Layout = "~/Views/Share/_Backend.cshtml";
+}
+<section class="vbox" ng-app="MyApp" ng-controller="CtrlController">
+    <section class="scrollable padder">
+        <div class="m-b-md">
+            <h3 class="m-b-none">Thêm/chỉnh sửa slide</h3>
+            <hr />
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Tên slide</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control validation", @placeholder = "Nhập slide" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Diễn giải</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control validation", @placeholder = "Diễn giải" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Hình đại diện</label>
+                    <div class="col-sm-3">
+                        <div id="boxCover" class="dropfile visible-lg">
+                            <img id="imgUpload" src="@ViewBag.Image" style="width: 240px; height: 173px" />
+                            <a id="imgCover" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label class="col-sm-3 control-label">
+                            @Html.CheckBox("IsActive", Model.IsActive)<strong>Sử dụng</strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <button type="button" class="btn btn-primary" data-ng-click="saveCover()">Lưu</button>
+                        <a class="btn btn-primary" href="/admin/slide">Quay lại</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+@section Styles {
+    <link href="~/Contents/css/ui-grid.css" rel="stylesheet" />
+    <link href="~/Contents/css/backend-ui-grid.css" rel="stylesheet" />
+    <link href="~/Contents/css/uploadfile.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/ui-grid.js"></script>
+    <script src="~/Scripts/jquery.uploadfile.js"></script>
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script>
+        var slideID = '@ViewBag.ID';
+        $("#imgCover").uploadFile({
+            url: '/admin/UploadCover',
+            multiple: false,
+            dragDrop: false,
+            allowedTypes: 'jpg,png,bmp,gif',
+            maxFileSize: 2100000,
+            onSuccess: function (files, response, xhr) {
+                var data = $.parseJSON(response);
+                $('#boxCover').find('img').attr('src', data.file);
+            },
+        });
+
+        $("#imgPhoto").uploadFile({
+            url: '/admin/UploadPhoto',
+            multiple: false,
+            dragDrop: false,
+            allowedTypes: 'jpg,png,bmp,gif',
+            maxFileSize: 2100000,
+            onSuccess: function (files, response, xhr) {
+                var data = $.parseJSON(response);
+                $('#boxPhoto').find('img').attr({ 'src': data.file, 'data-id': data.id });
+            },
+        });
+
+        var app = angular.module('MyApp', ['ui.grid', 'ui.grid.pagination']);
+        app.controller('CtrlController', ['$scope', '$http', 'uiGridConstants', function ($scope, $http, $apply, uiGridConstants) {
+            $scope.saveCover = function () {
+                var slide = {
+                    SlideID: slideID,
+                    Name: $('#Name').val(),
+                    Description: $('#Description').val(),
+                    Image: $('#boxCover').find('img').attr('src'),
+                    Sort: 1,
+                    IsActive: $('#IsActive').is(':checked')
+                };
+                $http({
+                    url: "/admin/SaveSlide",
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    data: JSON.stringify({ Slide: slide })
+                }).success(function (data) {
+                    if (data.IsOk) {
+                        window.location.href = "/admin/slide";
+                    }
+                });
+            };
+        }]);
+    </script>
+}

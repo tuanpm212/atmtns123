@@ -1,0 +1,9 @@
+D:\MyData\Web\Website\Website.Data\bin\Debug\Website.Data.dll.config
+D:\MyData\Web\Website\Website.Data\bin\Debug\Website.Data.dll
+D:\MyData\Web\Website\Website.Data\bin\Debug\Website.Data.pdb
+D:\MyData\Web\Website\Website.Data\bin\Debug\EntityFramework.dll
+D:\MyData\Web\Website\Website.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\MyData\Web\Website\Website.Data\bin\Debug\EntityFramework.xml
+D:\MyData\Web\Website\Website.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\MyData\Web\Website\Website.Data\obj\Debug\Website.Data.dll
+D:\MyData\Web\Website\Website.Data\obj\Debug\Website.Data.pdb

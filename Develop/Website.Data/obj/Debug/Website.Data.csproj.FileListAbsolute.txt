@@ -7,3 +7,12 @@ D:\MyData\Web\Website\Website.Data\bin\Debug\EntityFramework.xml
 D:\MyData\Web\Website\Website.Data\bin\Debug\EntityFramework.SqlServer.xml
 D:\MyData\Web\Website\Website.Data\obj\Debug\Website.Data.dll
 D:\MyData\Web\Website\Website.Data\obj\Debug\Website.Data.pdb
+C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\bin\Debug\Website.Data.dll.config
+C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\bin\Debug\Website.Data.dll
+C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\bin\Debug\Website.Data.pdb
+C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\bin\Debug\EntityFramework.dll
+C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\bin\Debug\EntityFramework.xml
+C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\obj\Debug\Website.Data.dll
+C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\obj\Debug\Website.Data.pdb

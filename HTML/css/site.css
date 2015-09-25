@@ -531,11 +531,11 @@ hr {
 .section-product .item {
   display: block;
   padding: 15px;
-  margin-bottom: 15px;
-  border: 1px solid #dad2ae;
 }
 .section-product .item img {
+  padding: 15px;
   width: 100%;
+  border: 1px solid #dad2ae;
 }
 .section-product .item h5 {
   color: #8d8b6b;
@@ -616,14 +616,14 @@ hr {
 .section-news .item > img {
   width: 100%;
 }
-.section-news ul {
+.section-news .content-news ul {
   list-style: none;
 }
-.section-news ul > li {
+.section-news .content-news ul > li {
   padding-left: 1em;
   text-indent: -0.7em;
 }
-.section-news ul > li:before {
+.section-news .content-news ul > li:before {
   content: "• ";
   color: red;
 }

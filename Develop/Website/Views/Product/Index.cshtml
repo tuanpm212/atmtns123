@@ -41,36 +41,60 @@
                             @if(i<Model.Count())
                             { 
                                 <div class="col-sm-4">
-                                    <a href="#" class="item text-center">
+                                    <div class="item text-center">
                                         <img src="@Model[i].ImageThumbnail">
                                         <h5>@Model[i].Name</h5>
                                         <p>Giá bán: @Model[i].Price VNĐ</p>
-                                    </a>
+                                        <a class="btn btn-default" href="#">Xem chi tiết</a>
+                                    </div>
                                 </div>
                             }
                             @if (i + 1 < Model.Count())
                             {
                                 <div class="col-sm-4">
-                                    <a href="#" class="item text-center">
+                                    <div class="item text-center">
                                         <img src="@Model[i + 1].ImageThumbnail">
                                         <h5>@Model[i + 1].Name</h5>
                                         <p>Giá bán: @Model[i + 1].Price VNĐ</p>
-                                    </a>
+                                        <a class="btn btn-default" href="#">Xem chi tiết</a>
+                                    </div>
                                 </div>
                             }
                             @if (i + 2 < Model.Count())
                             {
                                 <div class="col-sm-4">
-                                    <a href="#" class="item text-center">
+                                    <div class="item text-center">
                                         <img src="@Model[i + 2].ImageThumbnail">
                                         <h5>@Model[i + 2].Name</h5>
                                         <p>Giá bán: @Model[i + 2].Price VNĐ</p>
-                                    </a>
+                                        <a class="btn btn-default" href="#">Xem chi tiết</a>
+                                    </div>
                                 </div>
                             }
                         </div>
                     }
                 }
+            </div>
+            <div class="text-center">
+                <nav>
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

@@ -1,0 +1,246 @@
+﻿@using Website.Data;
+@model List<Photo>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Share/_LayoutPage.cshtml";
+}
+
+<section class="section-gallery">
+    <div class="section-content">
+        <div class="image-panel">
+            <div class="image-box">
+                <div class="carousel-padding">
+                    <div id="albumCarousel">
+                        @{
+                            bool isFirst = true;
+                            foreach (Photo row in Model)
+                            {
+                                if (isFirst)
+                                {
+                                    isFirst = false;
+                                    <div class="item-event active" data-id="@row.ID">
+                                        <img src="@row.Image">
+                                        <p>@row.Title</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="item-event" data-id="@row.ID">
+                                        <img src="@row.Image">
+                                        <p>@row.Title</p>
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div id="partialView" class="image-box"></div>
+        </div>
+    </div>
+</section>
+@section Styles {
+    <link href="~/Contents/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Contents/css/lightbox.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/Scripts/owl.carousel.js"></script>
+    <script src="~/Scripts/lightbox.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var albumCarousel = $('#albumCarousel'), lengthEvent='@ViewBag.Count', currItem = 0;
+            var photoID = '@ViewBag.id';
+            $('#albumCarousel').owlCarousel({
+                themeClass: "oil-carousel",
+                margin: 15,
+                responsive: {
+                    0: {
+                        items: 1,
+                        dots: true,
+                    },
+                    768: {
+                        items: 2,
+                        dots: false,
+                        nav: true,
+                        navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                    },
+                    992: {
+                        items: 4,
+                        dots: false,
+                        nav: true,
+                        navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                    },
+                },
+            });
+
+            $('#imageCarousel').owlCarousel({
+                themeClass: "oil-carousel",
+                margin: 15,
+                responsive: {
+                    0: {
+                        items: 2,
+                        dots: true,
+                    },
+                    768: {
+                        items: 3,
+                        dots: false,
+                        nav: true,
+                        navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                    },
+                    992: {
+                        items: 4,
+                        dots: false,
+                        nav: true,
+                        navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                    },
+                },
+            });
+
+            $('.owl-prev').click(function () {
+                var _index = currItem;
+                if (_index > 0) {
+                    currItem = _index - 1;
+                    $('.item-event').removeClass('active');
+                    $('.item-event').eq(currItem).addClass('active');
+                    LoadImageDetail($('.item-event').eq(currItem).attr('data-id'));
+                };
+            });
+
+            $('.owl-next').click(function () {
+                var _index = currItem;
+                if (_index < lengthEvent - 1) {
+                    currItem = _index + 1;
+                    $('.item-event').removeClass('active');
+                    $('.item-event').eq(currItem).addClass('active');
+                    LoadImageDetail($('.item-event').eq(currItem).attr('data-id'));
+                };
+            });
+
+            $(".item-event").click(function (evt) {
+                //var $partialView = $("#partialView"), heightDiv = $("#partialView").height();
+                //$partialView.attr('style', 'height:' + heightDiv + 'px');
+                $(".item-event").removeClass('active');
+                $(this).addClass('active');
+                currItem = getIndexOwlCarousel('.item-event.active');
+                LoadImageDetail($(this).attr('data-id'));
+            });
+
+            LoadImageDetail(photoID);
+            function LoadImageDetail(id) {
+                $("#partialView").load("/Gallery/Photo",
+                   {
+                       id: id
+                   }, function () {
+                       var imageCarousel = $('#imageCarousel'), lengthImage, currItemImage;
+                       imageCarousel.owlCarousel({
+                           themeClass: "oil-carousel",
+                           margin: 15,
+                           responsive: {
+                               0: {
+                                   items: 2,
+                                   dots: true,
+                               },
+                               768: {
+                                   items: 3,
+                                   dots: false,
+                                   nav: true,
+                                   navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                               },
+                               992: {
+                                   items: 4,
+                                   dots: false,
+                                   nav: true,
+                                   navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+                               },
+                           },
+                           navClass: ['owl-prev image-prev', 'owl-next image-next'],
+                           onInitialized: function () {
+                               lengthImage = this._items.length;
+                               currItemImage = getIndexOwlCarousel('.item-image.active')
+                               console.log('currItemImage:' + currItemImage);
+                           },
+                           onTranslated: function () {
+                               var _active = currItemImage, _index = this._current;
+                               if (_active < _index || _active > _index + this.settings.items - 1) {
+                                   if (_active < _index)
+                                       currItemImage = _index;
+                                   else
+                                       currItemImage = (_index + this.settings.items - 1);
+                                   $('.item-image').removeClass('active');
+                                   $('.item-image').eq(currItemImage).addClass('active');
+                                   loadFullImage(currItemImage);
+                                   console.log('currItemImage:' + currItemImage + 'onTranslated');
+                               };
+                           },
+                           onResized: function () {
+                               console.log('currItemImage:' + currItemImage + 'onResized');
+                               imageCarousel.trigger('to.owl.carousel', [currItemImage, 300]);
+                           },
+                           autoplay: true,
+                       });
+
+                       $('.image-prev').click(function () {
+                           var _index = currItemImage;
+                           if (_index > 0) {
+                               currItemImage = _index - 1;
+                               $('.item-image').removeClass('active');
+                               $('.item-image').eq(currItemImage).addClass('active');
+                               loadFullImage(currItemImage);
+                               console.log('currItemImage:' + currItemImage);
+                           };
+                       });
+
+                       $('.image-next').click(function () {
+                           var _index = currItemImage;
+                           if (_index < lengthImage - 1) {
+                               currItemImage = _index + 1;
+                               $('.item-image').removeClass('active');
+                               $('.item-image').eq(currItemImage).addClass('active');
+                               loadFullImage(currItemImage);
+                               console.log('currItemImage:' + currItemImage);
+                           };
+                       });
+
+                       $(".item-image").click(function () {
+                           $(".item-image").removeClass('active');
+                           $(this).addClass('active');
+                           currItemImage = getIndexOwlCarousel('.item-image.active');
+                           loadFullImage(currItemImage);
+                           console.log('currItemImage:' + currItemImage);
+                       });
+
+                       $('#partialView').removeAttr('style');
+                   });
+            };
+            function getIndexOwlCarousel(classElement) {
+                var seft = this, $classElement = $(classElement);
+                return $classElement.closest('.owl-item').index();
+            }
+
+            //---Load image full---//
+            function loadFullImage(position) {
+                var $lightboxContent = $('#lightboxContent'),
+                    srcImage = $('#imageCarousel').find('.owl-item').eq(position).find('.item-image').attr('data-img-full'),
+                    description = $('#imageCarousel').find('.owl-item').eq(position).find('.item-image').attr('data-description'),
+                    title = $('#imageCarousel').find('.owl-item').eq(position).find('.item-image').attr('data-title'),
+                    html = "",
+                    heightImage = $lightboxContent.height();
+                html += '<a href="' + srcImage + '" data-lightbox="lightbox" data-title="' + description + '"> <img id="imgLoad" src="' + srcImage + '"> <div><h5>' + title + '</h5></div></a>'
+                $lightboxContent.attr('style', 'height:' + heightImage + 'px');
+                $lightboxContent.html(html);
+                imageLoad();
+            };
+
+            function imageLoad() {
+                $('#imgLoad').load(function () {
+                    $('#lightboxContent').removeAttr('style');
+                });
+            };
+        });
+    </script>
+}
+
+
+
+
