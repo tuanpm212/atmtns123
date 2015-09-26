@@ -70,3 +70,38 @@ C:\Users\tuan.pham\Desktop\Website\Website\Website\obj\Debug\Website.Resources.E
 C:\Users\tuan.pham\Desktop\Website\Website\Website\obj\Debug\Website.csproj.GenerateResource.Cache
 C:\Users\tuan.pham\Desktop\Website\Website\Website\obj\Debug\Website.dll
 C:\Users\tuan.pham\Desktop\Website\Website\Website\obj\Debug\Website.pdb
+D:\Source Web\atmtns123\Develop\Website\bin\Website.dll.config
+D:\Source Web\atmtns123\Develop\Website\bin\Website.dll
+D:\Source Web\atmtns123\Develop\Website\bin\Website.pdb
+D:\Source Web\atmtns123\Develop\Website\bin\ImageResizer.dll
+D:\Source Web\atmtns123\Develop\Website\bin\Microsoft.Web.Infrastructure.dll
+D:\Source Web\atmtns123\Develop\Website\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\Source Web\atmtns123\Develop\Website\bin\Newtonsoft.Json.dll
+D:\Source Web\atmtns123\Develop\Website\bin\System.Net.Http.Formatting.dll
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.Helpers.dll
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.Http.dll
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.Http.WebHost.dll
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.Mvc.dll
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.Razor.dll
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.WebPages.Deployment.dll
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.WebPages.dll
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.WebPages.Razor.dll
+D:\Source Web\atmtns123\Develop\Website\bin\Website.Data.dll
+D:\Source Web\atmtns123\Develop\Website\bin\EntityFramework.dll
+D:\Source Web\atmtns123\Develop\Website\bin\Website.Data.pdb
+D:\Source Web\atmtns123\Develop\Website\bin\ImageResizer.xml
+D:\Source Web\atmtns123\Develop\Website\bin\Newtonsoft.Json.xml
+D:\Source Web\atmtns123\Develop\Website\bin\System.Net.Http.Formatting.xml
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.Http.xml
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.Http.WebHost.xml
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.Helpers.xml
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.Mvc.xml
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.Razor.xml
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.WebPages.xml
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.WebPages.Deployment.xml
+D:\Source Web\atmtns123\Develop\Website\bin\System.Web.WebPages.Razor.xml
+D:\Source Web\atmtns123\Develop\Website\bin\EntityFramework.xml
+D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.Resources.EmailTemplate.resources
+D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.csproj.GenerateResource.Cache
+D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.dll
+D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.pdb
