@@ -10,7 +10,7 @@
             <PropertyRef Name="AboutID" />
           </Key>
           <Property Name="AboutID" Type="int" Nullable="false" />
-          <Property Name="ShortContent" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ShortContent" Type="nvarchar(max)" />
           <Property Name="Contents" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Contact">
@@ -175,8 +175,8 @@
           <EntitySet Name="Videos" EntityType="DBModel.Video" />
           <EntitySet Name="Photos" EntityType="DBModel.Photo" />
           <EntitySet Name="PhotoDetails" EntityType="DBModel.PhotoDetail" />
-          <EntitySet Name="Abouts" EntityType="DBModel.About" />
           <EntitySet Name="Products" EntityType="DBModel.Product" />
+          <EntitySet Name="Abouts" EntityType="DBModel.About" />
         </EntityContainer>
         <EntityType Name="Message">
           <Key>
@@ -272,14 +272,6 @@
           <Property Name="Sort" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="About">
-          <Key>
-            <PropertyRef Name="AboutID" />
-          </Key>
-          <Property Name="AboutID" Type="Int32" Nullable="false" />
-          <Property Name="ShortContent" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ID" />
@@ -294,6 +286,14 @@
           <Property Name="Sort" Type="Int32" Nullable="false" />
           <Property Name="IsHot" Type="Boolean" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="AboutID" />
+          </Key>
+          <Property Name="AboutID" Type="Int32" Nullable="false" />
+          <Property Name="ShortContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -416,15 +416,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Abouts">
-            <EntityTypeMapping TypeName="DBModel.About">
-              <MappingFragment StoreEntitySet="About">
-                <ScalarProperty Name="Contents" ColumnName="Contents" />
-                <ScalarProperty Name="ShortContent" ColumnName="ShortContent" />
-                <ScalarProperty Name="AboutID" ColumnName="AboutID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="DBModel.Product">
               <MappingFragment StoreEntitySet="Product">
@@ -438,6 +429,15 @@
                 <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Abouts">
+            <EntityTypeMapping TypeName="DBModel.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="ShortContent" ColumnName="ShortContent" />
+                <ScalarProperty Name="AboutID" ColumnName="AboutID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -14,8 +14,8 @@
         <EntityTypeShape EntityType="DBModel.Video" Width="1.5" PointX="9.375" PointY="3.75" />
         <EntityTypeShape EntityType="DBModel.Photo" Width="1.5" PointX="0.75" PointY="8.75" />
         <EntityTypeShape EntityType="DBModel.PhotoDetail" Width="1.5" PointX="2.75" PointY="8.75" />
-        <EntityTypeShape EntityType="DBModel.About" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DBModel.About" Width="1.5" PointX="1.375" PointY="1.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

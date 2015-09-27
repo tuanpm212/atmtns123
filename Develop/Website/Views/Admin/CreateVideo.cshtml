@@ -61,11 +61,12 @@
     <script>
         $(document).ready(function () {
             $("#btnSave").click(function () {
+                var idVideo = ($('#VideoLink').val()).split('=');
                 var video = {
                     VideoID: '@ViewBag.ID',
                     Title: $('#Title').val(),
                     Description: $('#Description').val(),
-                    VideoLink: $('#VideoLink').val(),
+                    VideoLink: idVideo[1],
                     Sort: 1,
                     IsActive: $('#IsActive').val()
                 };

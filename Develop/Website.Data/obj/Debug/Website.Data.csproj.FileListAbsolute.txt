@@ -16,3 +16,13 @@ C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\bin\Debug\EntityFramewor
 C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\obj\Debug\Website.Data.dll
 C:\Users\tuan.pham\Desktop\Website\Website\Website.Data\obj\Debug\Website.Data.pdb
+D:\Source Web\atmtns123\Develop\Website.Data\bin\Debug\Website.Data.dll.config
+D:\Source Web\atmtns123\Develop\Website.Data\bin\Debug\Website.Data.dll
+D:\Source Web\atmtns123\Develop\Website.Data\bin\Debug\Website.Data.pdb
+D:\Source Web\atmtns123\Develop\Website.Data\bin\Debug\EntityFramework.dll
+D:\Source Web\atmtns123\Develop\Website.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Source Web\atmtns123\Develop\Website.Data\bin\Debug\EntityFramework.xml
+D:\Source Web\atmtns123\Develop\Website.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Source Web\atmtns123\Develop\Website.Data\obj\Debug\Website.Data.csprojResolveAssemblyReference.cache
+D:\Source Web\atmtns123\Develop\Website.Data\obj\Debug\Website.Data.dll
+D:\Source Web\atmtns123\Develop\Website.Data\obj\Debug\Website.Data.pdb

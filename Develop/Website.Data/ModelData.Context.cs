@@ -34,7 +34,7 @@ namespace Website.Data
         public virtual DbSet<Video> Videos { get; set; }
         public virtual DbSet<Photo> Photos { get; set; }
         public virtual DbSet<PhotoDetail> PhotoDetails { get; set; }
-        public virtual DbSet<About> Abouts { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<About> Abouts { get; set; }
     }
 }
