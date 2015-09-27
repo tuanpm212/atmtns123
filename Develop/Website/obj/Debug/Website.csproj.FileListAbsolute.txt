@@ -105,3 +105,4 @@ D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.Resources.EmailTemplat
 D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.csproj.GenerateResource.Cache
 D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.dll
 D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.pdb
+D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.csprojResolveAssemblyReference.cache

@@ -57,30 +57,57 @@
         var MRT_GetImageImageURL = "@Url.Action("GetImage", "Mediamanager", new { area = "" })";
     </script>
     <script>
-        loadEditor("#description");
-
-        $('#btnSave').click(function () {
-            var _about = {
-                AboutID: '@ViewBag.ID',
-                ShortContent: '@ViewBag.ShortContent',
-                Contents: $('#description').data("kendoEditor").value()
-            };
-            $.ajax({
-                url: '/admin/About',
-                type: 'Post',
-                data: JSON.stringify({ About: _about }),
-                contentType: 'application/json; charset=utf-8',
-                success: function (data) {
-                    if (data.IsOk) {
-                        $('#msgContent').html('Bạn đã lưu thành công!');
-                        $('#modalConfirm').modal('show');
+        $(document).ready(function () {
+            loadEditor("#description");
+            $("#formWelcome").submit(function (event) {
+                var _about = {
+                    AboutID: '@ViewBag.ID',
+                    ShortContent: '@ViewBag.ShortContent',
+                    Contents: $('#description').data("kendoEditor").value()
+                };
+                $.ajax({
+                    url: '/admin/About',
+                    type: 'Post',
+                    data: JSON.stringify({ About: _about }),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data.IsOk) {
+                            $('#msgContent').html('Bạn đã lưu thành công!');
+                            $('#modalConfirm').modal('show');
+                        }
+                        else {
+                            $('#msgContent').html('Bạn đã lưu thành công!');
+                            $('#modalConfirm').modal('show');
+                        }
                     }
-                    else {
-                        $('#msgContent').html('Bạn đã lưu thành công!');
-                        $('#modalConfirm').modal('show');
-                    }
-                }
+                });
+                event.preventDefault();
             });
+            @*$("#formWelcome").submit(function (e) {
+                e.preventDefault;
+                var _about = {
+                    AboutID: '@ViewBag.ID',
+                    ShortContent: '@ViewBag.ShortContent',
+                    Contents: $('#description').data("kendoEditor").value()
+                };
+                console.log(_about);
+                $.ajax({
+                    url: '/admin/About',
+                    type: 'Post',
+                    data: JSON.stringify({ About: _about }),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data.IsOk) {
+                            $('#msgContent').html('Bạn đã lưu thành công!');
+                            $('#modalConfirm').modal('show');
+                        }
+                        else {
+                            $('#msgContent').html('Bạn đã lưu thành công!');
+                            $('#modalConfirm').modal('show');
+                        }
+                    }
+                });
+            });*@
         });
-    </script>
+</script>
 }

@@ -258,7 +258,7 @@ namespace Website.Controllers
             {
                 // Initialize variables we'll need for resizing and saving
                 var width = 240;
-                var height = 173;
+                var height = 240;
                 var relativeFileAndPath = "/Uploads/default";
                 var fileName = Guid.NewGuid().ToString() + file.FileName.Substring(file.FileName.LastIndexOf('.'));
                 // Build absolute path
