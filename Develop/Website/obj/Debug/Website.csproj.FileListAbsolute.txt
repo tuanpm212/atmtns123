@@ -106,3 +106,39 @@ D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.csproj.GenerateResourc
 D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.dll
 D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.pdb
 D:\Source Web\atmtns123\Develop\Website\obj\Debug\Website.csprojResolveAssemblyReference.cache
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\Website.dll.config
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\Website.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\Website.pdb
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\ImageResizer.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\Newtonsoft.Json.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Net.Http.Formatting.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.Helpers.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.Http.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.Http.WebHost.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.Mvc.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.Razor.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.WebPages.Deployment.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.WebPages.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.WebPages.Razor.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\Website.Data.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\EntityFramework.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\Website.Data.pdb
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\ImageResizer.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\Newtonsoft.Json.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Net.Http.Formatting.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.Http.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.Http.WebHost.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.Helpers.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.Mvc.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.Razor.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.WebPages.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.WebPages.Deployment.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\System.Web.WebPages.Razor.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\bin\EntityFramework.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\obj\Debug\Website.csprojResolveAssemblyReference.cache
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\obj\Debug\Website.Resources.EmailTemplate.resources
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\obj\Debug\Website.csproj.GenerateResource.Cache
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\obj\Debug\Website.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\obj\Debug\Website.pdb

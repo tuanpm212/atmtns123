@@ -837,6 +837,11 @@ hr {
 		> img {
 			width: 100%;
 		}
+
+		&:hover {
+			.box-shadow(@z-depth-2);
+			.transition(all 600ms cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
 	}
 
 	.content-news {

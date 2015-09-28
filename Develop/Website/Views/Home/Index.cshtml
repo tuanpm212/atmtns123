@@ -64,7 +64,7 @@
         <div class="col-sm-8 clearfix wellcome-block">
             <h1 class="text-center"><strong>GIỚI THIỆU</strong></h1>
             <div class="text-justify description">
-                @Html.Raw(Model.about.ShortContent)
+                @Html.Raw(HttpUtility.HtmlDecode(Model.about.ShortContent))
             </div>
             <a href="/home/about" class="btn btn-default pull-right">Xem chi tiết</a>
         </div>
@@ -73,11 +73,18 @@
                 int j = 1;
                 foreach (Product row in Model.Products)
                 {
-                    <div class="item clearfix">
-                        <span class="top top-@j">@j</span>
-                        <h4 class="text-uppercase"><a href="#">@row.Name</a></h4>
-                        <p>@row.ShortDescription</p>
-                    </div>
+                    if (j <= 3)
+                    {
+                        <div class="item clearfix">
+                            <span class="top top-@j">@j</span>
+                            <h4 class="text-uppercase"><a href="#">@row.Name</a></h4>
+                            <p>@row.ShortDescription</p>
+                        </div>
+                    }
+                    else
+                    {
+                        break;
+                    }
                     j++;
                 }
             }

@@ -19,7 +19,7 @@
             <hr>
             <h1 class="text-center"><strong>GIỚI THIỆU</strong></h1>
             <div class="text-justify description">
-                @Html.Raw(Model.Contents)
+                @Html.Raw(HttpUtility.HtmlDecode(Model.Contents))
             </div>
         </div>
     </div>

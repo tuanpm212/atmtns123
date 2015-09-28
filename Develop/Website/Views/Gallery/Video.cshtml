@@ -50,9 +50,18 @@
     </div>
 </section>
 @section Scripts {
+    <script src="~/Scripts/jquery.slimscroll.js"></script>
     <script type="text/javascript">
         var mYoutubeLink = '';
         $(document).ready(function () {
+            var height = $('.video-player').height();
+            $('.video-thumnail ul').slimscroll({
+                height: height,
+                color: '#2B2010',
+                disableFadeOut: true,
+                alwaysVisible: true,
+            });
+
             $('#menuVideo').find('.item').each(function () {
                 $(this).click(function () {
                     $('#menuVideo').find('.item').removeClass('active');

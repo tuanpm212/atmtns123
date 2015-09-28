@@ -26,3 +26,13 @@ D:\Source Web\atmtns123\Develop\Website.Data\bin\Debug\EntityFramework.SqlServer
 D:\Source Web\atmtns123\Develop\Website.Data\obj\Debug\Website.Data.csprojResolveAssemblyReference.cache
 D:\Source Web\atmtns123\Develop\Website.Data\obj\Debug\Website.Data.dll
 D:\Source Web\atmtns123\Develop\Website.Data\obj\Debug\Website.Data.pdb
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website.Data\bin\Debug\Website.Data.dll.config
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website.Data\bin\Debug\Website.Data.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website.Data\bin\Debug\Website.Data.pdb
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website.Data\bin\Debug\EntityFramework.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website.Data\bin\Debug\EntityFramework.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website.Data\obj\Debug\Website.Data.csprojResolveAssemblyReference.cache
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website.Data\obj\Debug\Website.Data.dll
+C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website.Data\obj\Debug\Website.Data.pdb
