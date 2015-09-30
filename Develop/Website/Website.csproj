@@ -209,7 +209,6 @@
     <Content Include="Contents\kendo\textures\stripe6.png" />
     <Content Include="Contents\kendo\textures\transparency.png" />
     <Content Include="Contents\kendo\textures\transtexture.png" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\close.png" />
     <Content Include="Images\loading.gif" />
@@ -231,6 +230,7 @@
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\ui-grid.js" />
+    <Content Include="Uploads\Product\default_product.jpg" />
     <Content Include="Uploads\Sliders\slide-1.jpg" />
     <Content Include="Uploads\Videos\slide.jpg" />
     <Content Include="Web.config" />

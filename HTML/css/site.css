@@ -95,6 +95,10 @@ fieldset[disabled] .btn-default.active {
   background: none;
   color: #d9524e;
 }
+.pagination > li.active > a:hover {
+  background: none;
+  color: #d9524e;
+}
 .z-depth-1 {
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
