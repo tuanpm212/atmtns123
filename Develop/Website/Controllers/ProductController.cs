@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Website.Data;
 using Website.Data.BLL;
+using PagedList;
 
 namespace Website.Controllers
 {
@@ -13,12 +14,14 @@ namespace Website.Controllers
         //
         // GET: /Product/
 
-        public ActionResult Index()
+        public ActionResult Index(int ? p)
         {
             ProductBO cls = new ProductBO();
             var model = cls.GetData();
             _session.IsLogin = false;
-            return View(model);
+            int pageSize = 9;
+            int pageNumber = (p ?? 1);
+            return View(model.ToPagedList(pageNumber, pageSize));
         }
 
     }

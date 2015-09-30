@@ -1,5 +1,6 @@
 ﻿@using Website.Data;
-@model List<Website.Data.Product>
+@model PagedList.IPagedList<Website.Data.Product>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Sản phẩm";
     Layout = "~/Views/Share/_LayoutPage.cshtml";
@@ -75,6 +76,7 @@
                     }
                 }
             </div>
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
             <div class="text-center">
                 <nav>
                     <ul class="pagination">

@@ -142,3 +142,7 @@ C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\obj\Debug\Website.
 C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\obj\Debug\Website.csproj.GenerateResource.Cache
 C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\obj\Debug\Website.dll
 C:\Users\tuan.pham\Documents\GitHub\atmtns123\Develop\Website\obj\Debug\Website.pdb
+D:\Source Web\atmtns123\Develop\Website\bin\PagedList.dll
+D:\Source Web\atmtns123\Develop\Website\bin\PagedList.Mvc.dll
+D:\Source Web\atmtns123\Develop\Website\bin\PagedList.xml
+D:\Source Web\atmtns123\Develop\Website\bin\PagedList.Mvc.xml
