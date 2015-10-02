@@ -7,6 +7,7 @@ using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using Website.Data;
 using Website.Data.BLL;
+using PagedList;
 
 namespace Website.Controllers
 {
@@ -59,9 +60,22 @@ namespace Website.Controllers
                 return View(model);
             }
 
-            public ActionResult News()
+            public ActionResult News(int ? p)
             {
-                return View();
+                NewsBO cls = new NewsBO();
+                var model = cls.GetNews();
+                _session.IsLogin = false;
+                int pageSize = 9;
+                int pageNumber = (p ?? 1);
+                return View(model.ToPagedList(pageNumber, pageSize));
+            }
+
+            public ActionResult NewsDetail(long i)
+            {
+                NewsBO cls = new NewsBO();
+                var model = cls.GetNews(i);
+                _session.IsLogin = false;
+                return View(model);
             }
 
           #endregion

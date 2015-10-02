@@ -53,6 +53,7 @@
       <DependentUpon>ModelData.tt</DependentUpon>
     </Compile>
     <Compile Include="BLL\AboutBO.cs" />
+    <Compile Include="BLL\NewBO.cs" />
     <Compile Include="BLL\ProductBO.cs" />
     <Compile Include="BLL\ContactBO.cs" />
     <Compile Include="BLL\HomeBO.cs" />

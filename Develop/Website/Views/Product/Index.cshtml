@@ -6,7 +6,6 @@
     Layout = "~/Views/Share/_LayoutPage.cshtml";
 }
 
-
 <section class="section-product">
     <div class="row">
         <div class="col-sm-3 col-sm-push-9 clearfix">
@@ -43,7 +42,7 @@
                             { 
                                 <div class="col-sm-4">
                                     <div class="item text-center">
-                                        <img src="@(Model[i].ImageThumbnail == null ? "/Uploads/Product/default_product.jpg" : Model[i].ImageThumbnail)">
+                                        <img src="@(Model[i].ImageThumbnail == null ? "/Uploads/Product/default.jpg" : Model[i].ImageThumbnail)">
                                         <h5>@Model[i].Name</h5>
                                         <p>Giá bán: @Model[i].Price VNĐ</p>
                                         <a class="btn btn-default" href="#">Xem chi tiết</a>
@@ -54,7 +53,7 @@
                             {
                                 <div class="col-sm-4">
                                     <div class="item text-center">
-                                        <img src="@(Model[i + 1].ImageThumbnail == null ? "/Uploads/Product/default_product.jpg" : Model[i + 1].ImageThumbnail)">
+                                        <img src="@(Model[i + 1].ImageThumbnail == null ? "/Uploads/Product/default.jpg" : Model[i + 1].ImageThumbnail)">
                                         <h5>@Model[i + 1].Name</h5>
                                         <p>Giá bán: @Model[i + 1].Price VNĐ</p>
                                         <a class="btn btn-default" href="#">Xem chi tiết</a>
@@ -65,7 +64,7 @@
                             {
                                 <div class="col-sm-4">
                                     <div class="item text-center">
-                                        <img src="@(Model[i + 2].ImageThumbnail == null ? "/Uploads/Product/default_product.jpg" : Model[i + 2].ImageThumbnail)">
+                                        <img src="@(Model[i + 2].ImageThumbnail == null ? "/Uploads/Product/default.jpg" : Model[i + 2].ImageThumbnail)">
                                         <h5>@Model[i + 2].Name</h5>
                                         <p>Giá bán: @Model[i + 2].Price VNĐ</p>
                                         <a class="btn btn-default" href="#">Xem chi tiết</a>
