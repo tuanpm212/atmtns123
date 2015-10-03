@@ -59,7 +59,7 @@
     <nav class="collapse navbar-collapse" id="navbar">
         <ul class="list-unstyled">
             @{
-                if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToUpper() == "HOME" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "INDEX")
+                if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "HOME" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "INDEX")
                 {
                     <li class="active"><a href="/home">Home</a></li>
                 }
@@ -67,7 +67,7 @@
                 {
                     <li><a href="/home">Home</a></li>
                 }
-                if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToUpper() == "HOME" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "ABOUT")
+                if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "HOME" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "ABOUT")
                 {
                     <li class="active"><a href="/home/about">Giới thiệu</a></li>
                 }
@@ -75,7 +75,7 @@
                 {
                     <li><a href="/home/about">Giới thiệu</a></li>
                 }
-                if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToUpper() == "PRODUCT" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "INDEX")
+                if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "PRODUCT" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "INDEX")
                 {
                     <li class="active"><a href="/product">Sản phẩm</a></li>
                 }
@@ -83,7 +83,7 @@
                 {
                     <li><a href="/product">Sản phẩm</a></li>
                 }
-                if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToUpper() == "HOME" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "NEWS")
+                if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "HOME" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "NEWS" || ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "HOME" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "NEWSDETAIL")
                 {
                     <li class="active"><a href="/home/news">Tin tức</a></li>
                 }
@@ -91,7 +91,7 @@
                 {
                     <li><a href="/home/news">Tin tức</a></li>
                 }
-                if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToUpper() == "GALLERY" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "INDEX")
+                if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "GALLERY" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "INDEX")
                 {
                     <li class="active"><a href="/gallery">Hình ảnh</a></li>
                 }
@@ -99,7 +99,7 @@
                 {
                     <li><a href="/gallery">Hình ảnh</a></li>
                 }
-                if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToUpper() == "GALLERY" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "VIDEO")
+                if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "GALLERY" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "VIDEO")
                 {
                     <li class="active"><a href="/gallery/video">Video</a></li>
                 }
@@ -107,7 +107,7 @@
                 {
                     <li><a href="/gallery/video">Video</a></li>
                 }
-                if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToUpper() == "HOME" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CONTACT")
+                if (ViewContext.RouteData.Values["controller"].ToString().ToUpper() == "HOME" && ViewContext.RouteData.Values["action"].ToString().ToUpper() == "CONTACT")
                 {
                     <li class="active"><a href="/home/contact">Liên hệ</a></li>
                 }

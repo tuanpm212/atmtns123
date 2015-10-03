@@ -230,8 +230,11 @@
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\ui-grid.js" />
-    <Content Include="Uploads\Product\default_product.jpg" />
+    <Content Include="Uploads\News\default.jpg" />
+    <Content Include="Uploads\Product\default.jpg" />
     <Content Include="Uploads\Sliders\slide-1.jpg" />
+    <Content Include="Uploads\Sliders\slide-2.jpg" />
+    <Content Include="Uploads\Sliders\slide-3.jpg" />
     <Content Include="Uploads\Videos\slide.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -247,7 +250,6 @@
     <Folder Include="Models\" />
     <Folder Include="Uploads\Abouts\" />
     <Folder Include="Uploads\Gallery\" />
-    <Folder Include="Uploads\News\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -351,6 +353,9 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\WebsitePublish.pubxml" />
     <Content Include="Views\Home\NewsDetail.cshtml" />
+    <Content Include="Views\Admin\News.cshtml" />
+    <Content Include="Views\Admin\CreateNews.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -24,5 +24,13 @@ namespace Website.Controllers
             return View(model.ToPagedList(pageNumber, pageSize));
         }
 
+        public ActionResult Details(long i)
+        {
+            ProductBO cls = new ProductBO();
+            var model = cls.GetProduct(i);
+            _session.IsLogin = false;
+            return View(model);
+        }
+
     }
 }

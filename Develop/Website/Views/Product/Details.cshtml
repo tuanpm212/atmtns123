@@ -1,0 +1,111 @@
+﻿@model Website.Data.Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Share/_LayoutPage.cshtml";
+}
+
+@section Styles {
+    <link href="~/Contents/css/lightbox.css" rel="stylesheet" />
+}
+
+<section class="section-product">
+    <div class="row">
+        <div class="col-sm-9 clearfix">
+            <h3>Chi tiết sản phẩm</h3>
+            <hr>
+            <div class="details-product">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-6 img-product">
+                                <a class="img-small" href="@Model.ImageLarge" data-lightbox="lightbox">
+                                    <img title="" src="@Model.ImageThumbnail">
+                                </a>
+                                <!--<div class="img-thumb">
+                                    <a href="temp/product-detail-full.png" data-lightbox="lightbox">
+                                        <img title="" src="temp/product-detail-thumb.png">
+                                    </a>
+                                    <a href="temp/product-detail-full.png" data-lightbox="lightbox">
+                                        <img title="" src="temp/product-detail-thumb.png">
+                                    </a>
+                                    <a href="temp/product-detail-full.png" data-lightbox="lightbox">
+                                        <img title="" src="temp/product-detail-thumb.png">
+                                    </a>
+                                    <a href="temp/product-detail-full.png" data-lightbox="lightbox">
+                                        <img title="" src="temp/product-detail-thumb.png">
+                                    </a>
+                                </div>-->
+                            </div>
+                            <div class="col-sm-6 info-product">
+                                <h4>@Model.Name</h4>
+                                <dl>
+                                    <dt>Nhà sản xuất:</dt>
+                                    <dd>Castrol Việt Nam</dd>
+                                </dl>
+                                <dl>
+                                    <dt>Mã hàng:</dt>
+                                    <dd>CTO001</dd>
+                                </dl>
+                                <dl>
+                                    <dt>Trạng thái:</dt>
+                                    <dd>Còn hàng</dd>
+                                </dl>
+                                <dl class="price-product">
+                                    <dt>Giá bán:</dt>
+                                    <dd>@Model.Price</dd>
+                                </dl>
+                                <p>
+                                    <em>Lưu ý: Giá có thể thay đổi theo thời giá.</em>
+                            </div>
+                        </div>
+                        <h3>Thông tin sản phẩm</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                @Html.Raw(HttpUtility.HtmlDecode(Model.LongDescription))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 clearfix">
+            <h3>Sản phẩm khác</h3>
+            <hr>
+            <ul class="list-unstyled">
+                <li class="input-group-oil-style">
+                    <a href="#" class="item text-center">
+                        <img src="temp/product-1.jpg">
+                        <h5>Nhớt Castrol Magnatec</h5>
+                        <p>Giá bán: 1.000.000 VNĐ</p>
+                    </a>
+                </li>
+                <li class="input-group-oil-style">
+                    <a href="#" class="item text-center">
+                        <img src="temp/product-1.jpg">
+                        <h5>Nhớt Castrol Magnatec</h5>
+                        <p>Giá bán: 1.000.000 VNĐ</p>
+                    </a>
+                </li>
+                <li class="input-group-oil-style">
+                    <a href="#" class="item text-center">
+                        <img src="temp/product-1.jpg">
+                        <h5>Nhớt Castrol Magnatec</h5>
+                        <p>Giá bán: 1.000.000 VNĐ</p>
+                    </a>
+                </li>
+                <li class="input-group-oil-style">
+                    <a href="#" class="item text-center">
+                        <img src="temp/product-1.jpg">
+                        <h5>Nhớt Castrol Magnatec</h5>
+                        <p>Giá bán: 1.000.000 VNĐ</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/lightbox.js"></script>
+}

@@ -1,0 +1,102 @@
+﻿@model Website.Data.News
+@{
+    ViewBag.Title = "CreateNews";
+    Layout = "~/Views/Share/_Backend.cshtml";
+}
+
+<section class="scrollable padder">
+    <div class="m-b-md">
+        <h3 class="m-b-none">Create/View news</h3>
+        <hr />
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-horizontal">
+                @using (Html.BeginForm("CreateVideo", "Admin", FormMethod.Post, new { id = "contact", @class = "contact-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Tên tin tức</label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(m => m.Title, new { @class = "form-control validation", @placeholder = "Nhập tên tin tức" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Diễn giải ngắn</label>
+                        <div class="col-sm-9">
+                            @Html.TextAreaFor(m => m.ShortDescription, new { @class = "form-control validation", @placeholder = "Diễn giải ngắn" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Diễn giải</label>
+                        <div class="col-sm-9">
+                            @Html.TextAreaFor(m => m.LongDescription, new { @class = "form-control validation", @placeholder = "Diễn giải" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-8">
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBox("IsActive", Model.IsActive)<strong>Sử dụng</strong>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-8">
+                            <button id="btnSave" class="btn btn-primary">Lưu</button>
+                            <a href="/admin/video" class="btn btn-primary">Quay lại</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link href="~/Contents/css/ng-grid.css" rel="stylesheet" />
+    <link href="~/Contents/css/kendo.common.css" rel="stylesheet" />
+    <link href="~/Contents/css/kendo.office365.css" rel="stylesheet" />
+}
+@section Scripts {
+    <script src="~/Scripts/kendo.js"></script>
+    <script src="~/Scripts/function.js"></script>
+    <script>
+        var MRT_ReadImageURL = "@Url.Action("Index", "Mediamanager", new { area = "" })";
+        var MRT_DestroyImageURL = "@Url.Action("Destroy", "Mediamanager", new { area = "" })";
+        var MRT_CreateImageURL = "@Url.Action("Create", "Mediamanager", new { area = "" })";
+        var MRT_ThumbnailImageURL = "@Url.Action("Thumbnail", "Mediamanager", new { area = "" })";
+        var MRT_UploadImageURL = "@Url.Action("Upload", "Mediamanager", new { area = "" })";
+        var MRT_GetImageImageURL = "@Url.Action("GetImage", "Mediamanager", new { area = "" })";
+    </script>
+    <script>
+        $(document).ready(function () {
+            loadEditor("#LongDescription");
+
+            $("#btnSave").click(function () {
+                var news = {
+                    NewsID: '@ViewBag.ID',
+                    Title: $('#Title').val(),
+                    ShortDescription: $('#ShortDescription').val(),
+                    LongDescription: $('#LongDescription').val(),
+                    ImageThumbnail: "",
+                    Image: "",
+                    Sort: 1,
+                    IsActive: $('#IsActive').val()
+                };
+                $.ajax({
+                    url: '/admin/SaveNews',
+                    type: 'Post',
+                    data: JSON.stringify({ News: news }),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data.IsOk)
+                            window.location.href = "/admin/news";
+                    }
+                });
+            });
+        });
+    </script>
+}

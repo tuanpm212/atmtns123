@@ -45,7 +45,7 @@
                                         <img src="@(Model[i].ImageThumbnail == null ? "/Uploads/Product/default.jpg" : Model[i].ImageThumbnail)">
                                         <h5>@Model[i].Name</h5>
                                         <p>Giá bán: @Model[i].Price VNĐ</p>
-                                        <a class="btn btn-default" href="#">Xem chi tiết</a>
+                                        <a class="btn btn-default" href="@Url.Action("details", "product", new { i = Model[i].ID })">Xem chi tiết</a>
                                     </div>
                                 </div>
                             }
@@ -56,7 +56,7 @@
                                         <img src="@(Model[i + 1].ImageThumbnail == null ? "/Uploads/Product/default.jpg" : Model[i + 1].ImageThumbnail)">
                                         <h5>@Model[i + 1].Name</h5>
                                         <p>Giá bán: @Model[i + 1].Price VNĐ</p>
-                                        <a class="btn btn-default" href="#">Xem chi tiết</a>
+                                        <a class="btn btn-default" href="@Url.Action("details", "product", new { i = Model[i + 1].ID })">Xem chi tiết</a>
                                     </div>
                                 </div>
                             }
@@ -67,7 +67,7 @@
                                         <img src="@(Model[i + 2].ImageThumbnail == null ? "/Uploads/Product/default.jpg" : Model[i + 2].ImageThumbnail)">
                                         <h5>@Model[i + 2].Name</h5>
                                         <p>Giá bán: @Model[i + 2].Price VNĐ</p>
-                                        <a class="btn btn-default" href="#">Xem chi tiết</a>
+                                        <a class="btn btn-default" href="@Url.Action("details", "product", new { i = Model[i + 2].ID })">Xem chi tiết</a>
                                     </div>
                                 </div>
                             }

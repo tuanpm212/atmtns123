@@ -28,6 +28,24 @@ namespace Website.Data.BLL
             }
         }
 
+        public Product GetProduct(long id)
+        {
+            try
+            {
+                using (var db = new DBEntities())
+                {
+                    var select = from c in db.Products
+                                 where c.ID == id
+                                 select c;
+                    return select.First();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public bool Save(Product product)
         {
             try

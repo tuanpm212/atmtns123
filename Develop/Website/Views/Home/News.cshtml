@@ -17,7 +17,7 @@
                     @if (i < Model.Count())
                     {
                         <div class="col-sm-4">
-                            <a href="@Html." class="item">
+                            <a href="@Url.Action("newsdetail", "home", new { i = Model[i].NewsID })" class="item">
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <img class="embed-responsive-item" src="@(Model[i].ImageThumbnail == null ? "/Uploads/News/default.jpg" : Model[i].ImageThumbnail)">
                                 </div>
@@ -29,7 +29,7 @@
                     @if (i + 1 < Model.Count())
                     {
                         <div class="col-sm-4">
-                            <a href="#" class="item">
+                            <a href="@Url.Action("newsdetail", "home", new { i = Model[i + 1].NewsID })" class="item">
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <img class="embed-responsive-item" src="@(Model[i + 1].ImageThumbnail == null ? "/Uploads/News/default.jpg" : Model[i + 1].ImageThumbnail)">
                                 </div>
@@ -41,7 +41,7 @@
                     @if (i + 2 < Model.Count())
                     {
                         <div class="col-sm-4">
-                            <a href="#" class="item">
+                            <a href="@Url.Action("newsdetail", "home", new { i = Model[i + 2].NewsID })" class="item">
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <img class="embed-responsive-item" src="@(Model[i + 2].ImageThumbnail == null ? "/Uploads/News/default.jpg" : Model[i + 2].ImageThumbnail)">
                                 </div>
