@@ -2,7 +2,7 @@
 @model PagedList.IPagedList<Website.Data.Product>
 @using PagedList.Mvc;
 @{
-    ViewBag.Title = "Sản phẩm";
+    ViewBag.Title = "Danh sach Sản phẩm";
     Layout = "~/Views/Share/_LayoutPage.cshtml";
 }
 
@@ -75,7 +75,6 @@
                     }
                 }
             </div>
-            
             <div class="text-center">
                 @Html.PagedListPager(Model, p => Url.Action("Index", new { p }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
             </div>
